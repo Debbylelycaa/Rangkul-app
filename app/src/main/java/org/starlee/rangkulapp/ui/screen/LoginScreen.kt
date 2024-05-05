@@ -61,6 +61,14 @@ fun LoginScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                Image(
+                    painter = painterResource(id = R.drawable.logo_3),
+                    contentDescription = "Logo Aplikasi",
+                    modifier = Modifier
+                        .size(120.dp)
+                        .padding(bottom = 16.dp),
+                    contentScale = ContentScale.Fit
+                )
                 Text(
                     text = "Masuk",
                     fontSize = 28.sp,

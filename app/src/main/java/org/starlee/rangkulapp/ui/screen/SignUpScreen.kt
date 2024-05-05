@@ -60,6 +60,14 @@ fun SignupScreen(navigateToLogin: () -> Unit) {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                Image(
+                    painter = painterResource(id = R.drawable.logo_3),
+                    contentDescription = "Logo Aplikasi",
+                    modifier = Modifier
+                        .size(120.dp)
+                        .padding(bottom = 16.dp),
+                    contentScale = ContentScale.Fit
+                )
                 Text(
                     text = "Sign Up",
                     fontSize = 28.sp,
@@ -67,7 +75,7 @@ fun SignupScreen(navigateToLogin: () -> Unit) {
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                // TextField untuk email
+
                 OutlinedTextField(
                     value = emailState.value,
                     onValueChange = { newValue ->
@@ -80,7 +88,7 @@ fun SignupScreen(navigateToLogin: () -> Unit) {
                     )
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                // TextField untuk nama pengguna
+
                 OutlinedTextField(
                     value = usernameState.value,
                     onValueChange = { newValue ->
@@ -89,7 +97,7 @@ fun SignupScreen(navigateToLogin: () -> Unit) {
                     label = { Text("Nama Pengguna", color = Color.Black) },
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions.Default.copy(
-                        imeAction = ImeAction.Next // Mengubah imeAction menjadi Next
+                        imeAction = ImeAction.Next
                     )
                 )
                 Spacer(modifier = Modifier.height(16.dp))
