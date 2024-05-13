@@ -132,7 +132,7 @@ fun LoginScreen(
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
                     onClick = { /* Handle login */ },
-                    modifier = Modifier.wrapContentWidth(), // Menggunakan wrapContentWidth() untuk menyesuaikan lebar tombol dengan teks di dalamnya
+                    modifier = Modifier.wrapContentWidth(),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.White,
                         contentColor = Color.Black

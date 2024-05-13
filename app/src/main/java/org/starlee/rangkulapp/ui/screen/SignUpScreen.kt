@@ -41,7 +41,6 @@ fun SignupScreen(navigateToLogin: () -> Unit) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        // Gambar latar belakang
         Image(
             painter = backgroundImage,
             contentDescription = null,
