@@ -6,7 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.ui.screen.AboutScreen
+import org.starlee.rangkulapp.ui.screen.EditProfilScreen
 import org.starlee.rangkulapp.ui.screen.EmailScreen
+import org.starlee.rangkulapp.ui.screen.GantiKataSandiScreen
 import org.starlee.rangkulapp.ui.screen.ProfilScreen
 
 @Composable
@@ -23,6 +25,12 @@ fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
         }
         composable(route = Screen.Email.route) {
             EmailScreen(navController)
+        }
+        composable(route = Screen.EditProfil.route) {
+            EditProfilScreen(navController)
+        }
+        composable(route = Screen.GantiKataSandi.route) {
+            GantiKataSandiScreen(navController)
         }
     }
 }
