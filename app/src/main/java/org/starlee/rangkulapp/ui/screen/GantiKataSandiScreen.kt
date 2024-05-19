@@ -102,6 +102,7 @@ fun GantiKataSandiContent(modifier: Modifier) {
 
     val emailState = remember { mutableStateOf("") }
     val passwordState = remember { mutableStateOf("") }
+    val ulangpasswordState = remember { mutableStateOf("") }
 
     val customColor = colorResource(id = R.color.custom_blue)
 
@@ -190,9 +191,9 @@ fun GantiKataSandiContent(modifier: Modifier) {
             )
             Spacer(modifier = Modifier.height(3.dp))
             OutlinedTextField(
-                value = passwordState.value,
+                value = ulangpasswordState.value,
                 onValueChange = { newValue ->
-                    passwordState.value = newValue
+                    ulangpasswordState.value = newValue
                 },
                 label = { Text("......") },
                 modifier = Modifier.fillMaxWidth(),
