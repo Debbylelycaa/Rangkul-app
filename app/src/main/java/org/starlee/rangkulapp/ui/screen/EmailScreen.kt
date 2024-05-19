@@ -11,18 +11,21 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -31,11 +34,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -47,6 +52,9 @@ import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EmailScreen(navController: NavHostController) {
+
+    val customColor = colorResource(id = R.color.custom_blue)
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -78,8 +86,8 @@ fun EmailScreen(navController: NavHostController) {
                     )
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary,
+                    containerColor = customColor,
+                    titleContentColor = customColor,
                 )
             )
         }
@@ -88,58 +96,105 @@ fun EmailScreen(navController: NavHostController) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EmailContent(modifier: Modifier) {
 
     val emailState = remember { mutableStateOf("") }
     val passwordState = remember { mutableStateOf("") }
 
+    val customColor = colorResource(id = R.color.custom_blue)
+
     Surface(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(28.dp),
         color = Color.Transparent
     ) {
         Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            modifier = Modifier
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.Start // Align items to the start (left)
         ) {
             Text(
-                text = "Masukan Email",
-                fontSize = 28.sp,
+                text = "Masukkan Email",
+                fontSize = 20.sp,
                 color = Color.Black,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.height(16.dp))
-            // TextField untuk email
+            Spacer(modifier = Modifier.height(34.dp))
+            Text(
+                text = "Email",
+                fontSize = 16.sp,
+                color = Color.Black,
+                fontWeight = FontWeight.Normal,
+                textAlign = TextAlign.Start
+            )
+            Spacer(modifier = Modifier.height(3.dp))
             OutlinedTextField(
                 value = emailState.value,
                 onValueChange = { newValue ->
                     emailState.value = newValue
                 },
-                label = { Text("Email", color = Color.Black) },
+                label = { Text("example@gmail.com") },
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(
-                    imeAction = ImeAction.Next // Mengubah imeAction menjadi Next
+                    imeAction = ImeAction.Next
+                ),
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = customColor,
+                    unfocusedBorderColor = customColor,
+                    // Setting the label color to grey
+                    focusedLabelColor = Color.Gray,
+                    unfocusedLabelColor = Color.Gray
                 )
             )
-            Spacer(modifier = Modifier.height(16.dp))
-            // TextField untuk kata sandi
+            Spacer(modifier = Modifier.height(30.dp))
+            Text(
+                text = "Kata Sandi",
+                fontSize = 16.sp,
+                color = Color.Black,
+                fontWeight = FontWeight.Normal,
+                textAlign = TextAlign.Start
+            )
+            Spacer(modifier = Modifier.height(3.dp))
             OutlinedTextField(
                 value = passwordState.value,
                 onValueChange = { newValue ->
                     passwordState.value = newValue
                 },
-                label = { Text("Kata Sandi", color = Color.Black) },
-                modifier = Modifier
-                    .fillMaxWidth(),
+                label = { Text("......") },
+                modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Next
                 ),
-                visualTransformation = PasswordVisualTransformation()
+                visualTransformation = PasswordVisualTransformation(),
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = customColor,
+                    unfocusedBorderColor = customColor,
+                    // Setting the label color to grey
+                    focusedLabelColor = Color.Gray,
+                    unfocusedLabelColor = Color.Gray
+                )
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(40.dp))
+            Button(
+                onClick = { /* on click action */ },
+                modifier = Modifier
+                    .width(130.dp)
+                    .height(38.dp)
+                    .align(Alignment.CenterHorizontally), // Center the button horizontally
+                shape = RoundedCornerShape(10.dp)
+            ) {
+                Text(
+                    text = "Berikutnya",
+                    fontSize = 16.sp,
+                    color = Color.Black
+                )
+            }
         }
     }
 }
