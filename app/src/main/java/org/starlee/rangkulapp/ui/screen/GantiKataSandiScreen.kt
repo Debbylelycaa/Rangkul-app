@@ -18,6 +18,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -118,6 +119,7 @@ fun GantiKataSandiContent(modifier: Modifier) {
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.Start // Align items to the start (left)
         ) {
+
             Text(
                 text = "Ganti Kata Sandi",
                 fontSize = 20.sp,
@@ -216,7 +218,11 @@ fun GantiKataSandiContent(modifier: Modifier) {
                     .width(130.dp)
                     .height(38.dp)
                     .align(Alignment.CenterHorizontally), // Center the button horizontally
-                shape = RoundedCornerShape(10.dp)
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = customColor,
+                    contentColor = Color.Black
+                )
             ) {
                 Text(
                     text = "Simpan",

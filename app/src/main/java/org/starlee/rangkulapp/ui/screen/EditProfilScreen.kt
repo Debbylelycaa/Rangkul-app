@@ -89,8 +89,9 @@ fun EditProfilScreen(navController: NavHostController) {
                             color = Color.Black,
                             fontSize = 15.sp
                         ),
-                        modifier = Modifier.padding(start = 16.dp)
-                    )
+                        modifier = Modifier.padding(start = 16.dp) )
+
+
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = customColor,
