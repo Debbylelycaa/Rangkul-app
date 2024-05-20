@@ -1,3 +1,36 @@
 <resources>
-    <string name="app_name">RangkulApp</string>
+    <string name="app_name">Rangkul</string>
+    <string name="cari_panti">Cari Panti Asuhan</string>
+    <string name="back">Kembali</string>
+    <string name="pilih_nominal">Pilih nominal donasi</string>
+    <string name="minimal_donasi">Masukkan minimal donasi</string>
+    <string name="minimal">minimal donasi Rp 10.000</string>
+    <string name="lanjutpembayaran">Lanjutkan Pembayaran</string>
+    <string name="pembayaran">Pembayaran</string>
+    <string name="nominalsepuluh">Rp 10.000</string>
+    <string name="bri">BRI 526901034421538</string>
+    <string name="Mandiri">Mandiri 1310018055170</string>
+    <string name="debby">" Debby Lelyca"</string>
+    <string name="dianne">Dianne Dini Al-haq</string>
+    <string name="opsianonim">Sembunyikan nama saya (donasi sebagai anonim)</string>
+    <string name="asa">Berdoa di donasi ini (opsional)</string>
+    <string name="berhasil">Pembayaran Berhasil</string>
+    <string name="pembayaranberhasilimg">pembayaran berhasil</string>
+    <string name="detailPembayaran">Cek Detail Pembayaran</string>
+    <string name="jumlahdonasiterkirim">Donasimu sebesar Rp 10.000\ntelah terkirim</string>
+    <string name="uploadbukti">Upload Bukti Pembayaran</string>
+    <string name="unggahbuktidisini">Unggah bukti pembayaran anda di sini\ndan pembayaran anda akan segera dikonfirmasi</string>
+    <string name="uploadbuktiimg">Upload bukti</string>
+    <string name="upload">Upload</string>
+    <string name="terimakasih">Terimakasih!</string>
+    <string name="donasiditerima">Donasimu telah kami terima dan akan kami salurkan</string>
+    <string name="selesai">Selesai</string>
+    <string name="tgl">Tanggal</string>
+    <string name="tgldonasi">08 Mar 2023 16:18</string>
+    <string name="mtd">Metode Pembayaran</string>
+    <string name="pembayaranmethod">Transfer BRI</string>
+    <string name="id">ID Donasi</string>
+    <string name="iddonasi">#104513166</string>
+    <string name="stts">Status</string>
+    <string name="statusBerhasil">Berhasil</string>
 </resources>
