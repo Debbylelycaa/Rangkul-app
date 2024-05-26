@@ -17,6 +17,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -41,6 +44,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -103,7 +107,9 @@ fun GantiKataSandiContent(modifier: Modifier) {
 
     val emailState = remember { mutableStateOf("") }
     val passwordState = remember { mutableStateOf("") }
-    val ulangpasswordState = remember { mutableStateOf("") }
+    val ulangPasswordState = remember { mutableStateOf("") }
+    val passwordVisibility = remember { mutableStateOf(false) }
+    val ulangPasswordVisibility = remember { mutableStateOf(false) }
 
     val customColor = colorResource(id = R.color.custom_blue)
 
@@ -152,7 +158,14 @@ fun GantiKataSandiContent(modifier: Modifier) {
                     // Setting the label color to grey
                     focusedLabelColor = Color.Gray,
                     unfocusedLabelColor = Color.Gray
-                )
+                ),
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Edit,
+                        contentDescription = "Edit Icon",
+                        tint = customColor
+                    )
+                }
             )
             Spacer(modifier = Modifier.height(30.dp))
             Text(
@@ -170,16 +183,29 @@ fun GantiKataSandiContent(modifier: Modifier) {
                 },
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(
-                    imeAction = ImeAction.Next
+                    imeAction = ImeAction.Done
                 ),
-                visualTransformation = PasswordVisualTransformation(),
+                visualTransformation = if (passwordVisibility.value) VisualTransformation.None else PasswordVisualTransformation(),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = customColor,
                     unfocusedBorderColor = customColor,
                     // Setting the label color to grey
                     focusedLabelColor = Color.Gray,
                     unfocusedLabelColor = Color.Gray
-                )
+                ),
+                trailingIcon = {
+                    val image = if (passwordVisibility.value)
+                        Icons.Default.Visibility
+                    else Icons.Default.VisibilityOff
+
+                    val description = if (passwordVisibility.value) "Hide password" else "Show password"
+
+                    IconButton(onClick = {
+                        passwordVisibility.value = !passwordVisibility.value
+                    }) {
+                        Icon(imageVector = image, contentDescription = description, tint = customColor)
+                    }
+                }
             )
             Spacer(modifier = Modifier.height(30.dp))
             Text(
@@ -191,22 +217,35 @@ fun GantiKataSandiContent(modifier: Modifier) {
             )
             Spacer(modifier = Modifier.height(3.dp))
             OutlinedTextField(
-                value = ulangpasswordState.value,
+                value = ulangPasswordState.value,
                 onValueChange = { newValue ->
-                    ulangpasswordState.value = newValue
+                    ulangPasswordState.value = newValue
                 },
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(
-                    imeAction = ImeAction.Next
+                    imeAction = ImeAction.Done
                 ),
-                visualTransformation = PasswordVisualTransformation(),
+                visualTransformation = if (ulangPasswordVisibility.value) VisualTransformation.None else PasswordVisualTransformation(),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = customColor,
                     unfocusedBorderColor = customColor,
                     // Setting the label color to grey
                     focusedLabelColor = Color.Gray,
                     unfocusedLabelColor = Color.Gray
-                )
+                ),
+                trailingIcon = {
+                    val image = if (ulangPasswordVisibility.value)
+                        Icons.Default.Visibility
+                    else Icons.Default.VisibilityOff
+
+                    val description = if (ulangPasswordVisibility.value) "Hide password" else "Show password"
+
+                    IconButton(onClick = {
+                        ulangPasswordVisibility.value = !ulangPasswordVisibility.value
+                    }) {
+                        Icon(imageVector = image, contentDescription = description, tint = customColor)
+                    }
+                }
             )
             Spacer(modifier = Modifier.height(40.dp))
             Button(

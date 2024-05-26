@@ -24,8 +24,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.CalendarToday
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -114,8 +116,8 @@ fun EditProfilContent(modifier: Modifier) {
     val namalengkapState = remember { mutableStateOf("") }
     val noteleponState = remember { mutableStateOf("") }
     val alamatState = remember { mutableStateOf("") }
-    val genderOptions = listOf("Pria", "Wanita")
-    val selectedGenderState = remember { mutableStateOf(genderOptions[0]) }
+    val genderOptions = listOf("Perempuan", "Laki-laki")
+    val selectedGenderState = remember { mutableStateOf<String?>(null) }
     val dateState = remember { mutableStateOf("") }
 
     val emailState = remember { mutableStateOf("example@example.com") }
@@ -305,11 +307,20 @@ fun EditProfilContent(modifier: Modifier) {
                         unfocusedBorderColor = customColor,
                         focusedLabelColor = Color.Gray,
                         unfocusedLabelColor = Color.Gray
-                    )
+                    ),
+                    trailingIcon = {
+                        IconButton(onClick = { datePickerDialog.show() }) {
+                            Icon(
+                                imageVector = Icons.Default.CalendarToday,
+                                contentDescription = "Calendar Icon",
+                                tint = customColor
+                            )
+                        }
+                    }
                 )
                 Spacer(modifier = Modifier.height(30.dp))
                 Text(
-                    text = "No Telepon",
+                    text = "Nomor Telepon",
                     fontSize = 16.sp,
                     color = Color.Black,
                     fontWeight = FontWeight.Normal,
@@ -379,7 +390,11 @@ fun EditProfilContent(modifier: Modifier) {
                             .width(130.dp)
                             .height(38.dp)
                             .align(Alignment.Center),
-                        shape = RoundedCornerShape(10.dp)
+                        shape = RoundedCornerShape(10.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = customColor,
+                            contentColor = Color.Black
+                        )
                     ) {
                         Text(
                             text = "Simpan",
@@ -392,6 +407,7 @@ fun EditProfilContent(modifier: Modifier) {
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)

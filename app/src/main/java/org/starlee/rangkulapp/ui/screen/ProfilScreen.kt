@@ -11,24 +11,26 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Key
+import androidx.compose.material.icons.filled.PersonPin
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.PersonPin
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -38,13 +40,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
@@ -54,97 +57,142 @@ import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfilScreen(navController: NavHostController) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(text = stringResource(id = R.string.app_name))
-                },
-                colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    titleContentColor = MaterialTheme.colorScheme.primary,
-                ),
-                actions = {
-                    IconButton(
-                        onClick = {
-                            navController.navigate(Screen.About.route)
-                        }
-                    ) {
-                        // Uncomment the icon when it's needed
-                        // Icon(
-                        //     imageVector = Icons.Outlined.Info,
-                        //     contentDescription = stringResource(R.string.tentang_aplikasi),
-                        //     tint = MaterialTheme.colorScheme.primary
-                        // )
-                    }
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Scaffold(
+            topBar = {
+                Box(
+                    modifier = Modifier
+                        .statusBarsPadding()
+                        .fillMaxWidth()
+                ) {
+                    // Background Image
+                    Image(
+                        painter = painterResource(id = R.drawable.background1),
+                        contentDescription = "Background Image",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(100.dp), // Atur tinggi gambar
+                        contentScale = ContentScale.Crop
+                    )
                 }
-            )
+            }
+        ) { padding ->
+            ScreenContent(Modifier.padding(padding), navController)
         }
-    ) { padding ->
-        ScreenContent(Modifier.padding(padding), navController)
+
+        // Profile Picture with white circle background
+        Box(
+            modifier = Modifier
+                .size(108.dp)
+                .offset(y = 50.dp) // Memindahkan profil pic ke bawah
+                .align(Alignment.TopCenter) // Menempatkan profil pic di tengah atas
+                .zIndex(1f) // Memastikan profil pic berada di depan background
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(100.dp)
+                    .clip(CircleShape)
+                    .background(Color.White)
+                    .padding(7.dp) // Margin untuk lingkaran putih
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.profilpic),
+                    contentDescription = "Profile Picture",
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(CircleShape)
+                )
+            }
+        }
     }
 }
 
 @Composable
 fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostController) {
-    val customColor = colorResource(id = R.color.custom_blue)
-
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
+    Box(
+        modifier = modifier.fillMaxSize()
     ) {
+        // Background Image for ScreenContent
         Image(
-            painter = painterResource(id = R.drawable.profilpic),
-            contentDescription = "Profile Picture",
-            modifier = Modifier
-                .size(108.dp)
-                .clip(CircleShape)
-                .background(customColor)
+            painter = painterResource(id = R.drawable.background2),
+            contentDescription = "Screen Content Background Image",
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop
         )
-        Spacer(modifier = Modifier.height(8.dp))
-        Text(
-            text = "Khalilah Atika Akmal",
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold
-        )
-        Spacer(modifier = Modifier.height(60.dp))
 
-        Box(
+        Column(
             modifier = Modifier
-                .background(Color.White)
-                .padding(16.dp)
-                .fillMaxWidth()
+                .fillMaxSize()
+                .padding(top = 55.dp, start = 16.dp, end = 16.dp), // Changed top padding to 80.dp
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top
         ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
+            Text(
+                text = "Khalilah Atika Akmal",
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 16.dp) // Added bottom padding
+            )
+            Spacer(modifier = Modifier.height(25.dp))
+
+            Box(
+                modifier = Modifier
+                    .background(Color.White, shape = RoundedCornerShape(10.dp))
+                    .padding(16.dp)
+                    .fillMaxWidth()
             ) {
-                HoverButton(
-                    onClick = { navController.navigate(Screen.EditProfil.route) },
-                    modifier = Modifier.fillMaxWidth()
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(text = "Edit Profil")
-                }
-                Spacer(modifier = Modifier.height(8.dp))
-                HoverButton(
-                    onClick = { navController.navigate(Screen.GantiKataSandi.route) },
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(text = "Ganti Kata Sandi")
-                }
-                Spacer(modifier = Modifier.height(8.dp))
-                HoverButton(
-                    onClick = { navController.navigate(Screen.About.route) },
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text(text = "Tentang Aplikasi")
+                    HoverButton(
+                        onClick = { navController.navigate(Screen.EditProfil.route) },
+                        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp))
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                imageVector = Icons.Outlined.PersonPin,
+                                contentDescription = "Profile Icon",
+                                modifier = Modifier.padding(end = 8.dp) // Adjust the padding as needed
+                            )
+                            Text(text = "Edit Profil", fontSize = 14.sp )
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    HoverButton(
+                        onClick = { navController.navigate(Screen.Email.route) },
+                        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp))
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                imageVector = Icons.Default.Key,
+                                contentDescription = "Ganti Kata Sandi Icon",
+                                modifier = Modifier.padding(end = 8.dp) // Adjust the padding as needed
+                            )
+                            Text(text = "Ganti Kata Sandi", fontSize = 14.sp )
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(8.dp))
+                    HoverButton(
+                        onClick = { navController.navigate(Screen.About.route) },
+                        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp))
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                imageVector = Icons.Outlined.Info,
+                                contentDescription = "Tentang Aplikasi Icon",
+                                modifier = Modifier.padding(end = 8.dp) // Adjust the padding as needed
+                            )
+                            Text(text = "Tentang Aplikasi", fontSize = 14.sp )
+                        }
+                    }
                 }
             }
         }
     }
 }
+
 
 @Composable
 fun HoverButton(
@@ -158,16 +206,19 @@ fun HoverButton(
 
     Box(
         modifier = modifier
-            .background(backgroundColor, shape = RoundedCornerShape(4.dp))
-            .border(BorderStroke(1.dp, customColor), shape = RoundedCornerShape(4.dp))
-            .clip(RoundedCornerShape(4.dp))
+            .background(backgroundColor, shape = RoundedCornerShape(8.dp))
+            .border(BorderStroke(1.dp, Color.Transparent), shape = RoundedCornerShape(8.dp)) // Atur warna border menjadi transparan
+            .clip(RoundedCornerShape(8.dp))
             .clickable(
-                onClick = onClick,
+                onClick = {
+                    isPressed = !isPressed
+                    onClick()
+                },
                 indication = null,
                 interactionSource = remember { MutableInteractionSource() }
             )
             .padding(12.dp),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.CenterStart
     ) {
         content()
     }

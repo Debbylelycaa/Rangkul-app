@@ -17,7 +17,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -40,6 +44,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -47,6 +52,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
+import org.starlee.rangkulapp.navigation.Screen
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -92,16 +98,17 @@ fun EmailScreen(navController: NavHostController) {
             )
         }
     ) { padding ->
-        EmailContent(Modifier.padding(padding))
+        EmailContent(Modifier.padding(padding), navController)
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EmailContent(modifier: Modifier) {
+fun EmailContent(modifier: Modifier, navController: NavHostController) {
 
     val emailState = remember { mutableStateOf("") }
     val passwordState = remember { mutableStateOf("") }
+    val passwordVisibility = remember { mutableStateOf(false) }
 
     val customColor = colorResource(id = R.color.custom_blue)
 
@@ -149,7 +156,14 @@ fun EmailContent(modifier: Modifier) {
                     // Setting the label color to grey
                     focusedLabelColor = Color.Gray,
                     unfocusedLabelColor = Color.Gray
-                )
+                ),
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Edit,
+                        contentDescription = "Edit Icon",
+                        tint = customColor
+                    )
+                }
             )
             Spacer(modifier = Modifier.height(30.dp))
             Text(
@@ -167,25 +181,42 @@ fun EmailContent(modifier: Modifier) {
                 },
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(
-                    imeAction = ImeAction.Next
+                    imeAction = ImeAction.Done
                 ),
-                visualTransformation = PasswordVisualTransformation(),
+                visualTransformation = if (passwordVisibility.value) VisualTransformation.None else PasswordVisualTransformation(),
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = customColor,
                     unfocusedBorderColor = customColor,
                     // Setting the label color to grey
                     focusedLabelColor = Color.Gray,
                     unfocusedLabelColor = Color.Gray
-                )
+                ),
+                trailingIcon = {
+                    val image = if (passwordVisibility.value)
+                        Icons.Default.Visibility
+                    else Icons.Default.VisibilityOff
+
+                    val description = if (passwordVisibility.value) "Hide password" else "Show password"
+
+                    IconButton(onClick = {
+                        passwordVisibility.value = !passwordVisibility.value
+                    }) {
+                        Icon(imageVector = image, contentDescription = description, tint = customColor)
+                    }
+                }
             )
             Spacer(modifier = Modifier.height(40.dp))
             Button(
-                onClick = { /* on click action */ },
+                onClick = { navController.navigate(Screen.GantiKataSandi.route) },
                 modifier = Modifier
-                    .width(130.dp)
-                    .height(38.dp)
+                    .width(135.dp)
+                    .height(40.dp)
                     .align(Alignment.CenterHorizontally), // Center the button horizontally
-                shape = RoundedCornerShape(10.dp)
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = customColor,
+                    contentColor = Color.Black
+                )
             ) {
                 Text(
                     text = "Berikutnya",
