@@ -139,7 +139,6 @@ fun EmailContent(modifier: Modifier) {
                 onValueChange = { newValue ->
                     emailState.value = newValue
                 },
-                label = { Text("example@gmail.com") },
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Next
@@ -166,7 +165,6 @@ fun EmailContent(modifier: Modifier) {
                 onValueChange = { newValue ->
                     passwordState.value = newValue
                 },
-                label = { Text("......") },
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Next

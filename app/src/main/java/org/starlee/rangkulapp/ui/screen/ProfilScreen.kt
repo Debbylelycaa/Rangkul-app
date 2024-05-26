@@ -70,16 +70,17 @@ fun ProfilScreen(navController: NavHostController) {
                             navController.navigate(Screen.About.route)
                         }
                     ) {
-//                        Icon(
-//                            imageVector = Icons.Outlined.Info,
-//                            contentDescription = stringResource(R.string.tentang_aplikasi),
-//                            tint = MaterialTheme.colorScheme.primary
-//                        )
+                        // Uncomment the icon when it's needed
+                        // Icon(
+                        //     imageVector = Icons.Outlined.Info,
+                        //     contentDescription = stringResource(R.string.tentang_aplikasi),
+                        //     tint = MaterialTheme.colorScheme.primary
+                        // )
                     }
                 }
             )
         }
-    ) {padding ->
+    ) { padding ->
         ScreenContent(Modifier.padding(padding), navController)
     }
 }
@@ -95,9 +96,8 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        // Container informasi pengguna
         Image(
-            painter = painterResource(id = R.drawable.profilpic), // Ganti dengan resource gambar Anda
+            painter = painterResource(id = R.drawable.profilpic),
             contentDescription = "Profile Picture",
             modifier = Modifier
                 .size(108.dp)
@@ -112,7 +112,6 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
         )
         Spacer(modifier = Modifier.height(60.dp))
 
-        // Container untuk tombol-tombol
         Box(
             modifier = Modifier
                 .background(Color.White)
@@ -122,13 +121,13 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Tombol edit profil
-                HoverButton(onClick = { navController.navigate(Screen.EditProfil.route) },
-                    modifier = Modifier.fillMaxWidth()) {
+                HoverButton(
+                    onClick = { navController.navigate(Screen.EditProfil.route) },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
                     Text(text = "Edit Profil")
                 }
                 Spacer(modifier = Modifier.height(8.dp))
-                // Tombol ubah kata sandi
                 HoverButton(
                     onClick = { navController.navigate(Screen.GantiKataSandi.route) },
                     modifier = Modifier.fillMaxWidth()
@@ -136,7 +135,6 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
                     Text(text = "Ganti Kata Sandi")
                 }
                 Spacer(modifier = Modifier.height(8.dp))
-                // Tombol tentang aplikasi
                 HoverButton(
                     onClick = { navController.navigate(Screen.About.route) },
                     modifier = Modifier.fillMaxWidth()
@@ -174,7 +172,6 @@ fun HoverButton(
         content()
     }
 }
-
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)

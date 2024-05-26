@@ -142,7 +142,6 @@ fun GantiKataSandiContent(modifier: Modifier) {
                 onValueChange = { newValue ->
                     emailState.value = newValue
                 },
-                label = { Text("example@gmail.com") },
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Next
@@ -169,7 +168,6 @@ fun GantiKataSandiContent(modifier: Modifier) {
                 onValueChange = { newValue ->
                     passwordState.value = newValue
                 },
-                label = { Text("......") },
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Next
@@ -197,7 +195,6 @@ fun GantiKataSandiContent(modifier: Modifier) {
                 onValueChange = { newValue ->
                     ulangpasswordState.value = newValue
                 },
-                label = { Text("......") },
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Next
