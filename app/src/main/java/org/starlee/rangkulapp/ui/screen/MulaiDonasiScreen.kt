@@ -39,11 +39,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
+import org.starlee.rangkulapp.navigation.Screen
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @Composable
-fun MulaiDonasiScreen() {
+fun MulaiDonasiScreen(navController: NavHostController) {
     val blue = Color(0xFFA4E8FF)
     val backgroundclr = Color(0xFFE5EFF4)
     val darkenblue = Color(0xFF427CBF)
@@ -61,12 +64,14 @@ fun MulaiDonasiScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Card(
-            modifier = Modifier.fillMaxWidth().padding(20.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp),
             colors = CardDefaults.cardColors(containerColor = backgroundclr),
             border = null
         ) {
             IconButton(
-                onClick = {  },
+                onClick = { navController.popBackStack() },
                 modifier = Modifier
                     .padding(1.dp)
                     .background(
@@ -84,10 +89,11 @@ fun MulaiDonasiScreen() {
         Spacer(modifier = Modifier.height(200.dp))
 
         Card(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 30.dp),  // Add horizontal padding here
             colors = CardDefaults.cardColors(containerColor = Color.White)
-        )
-    {
+        ) {
             Column(
                 modifier = Modifier.padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -144,8 +150,9 @@ fun MulaiDonasiScreen() {
                         }
                     }
                 }
+                Spacer(modifier = Modifier.height(20.dp))
                 Button(
-                    onClick = { /* Aksi saat tombol diklik */ },
+                    onClick = {navController.navigate(Screen.Transfer.route)},
                     modifier = Modifier
                         .padding(vertical = 8.dp)
                         .background(blue, RoundedCornerShape(10.dp)), // Set background color to blue with rounded corners
@@ -160,12 +167,11 @@ fun MulaiDonasiScreen() {
     }
 }
 
-
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
-fun AboutScreenPreview(){
+fun MulaiDonasiScreenPreview(){
     RangkulAppTheme {
-        MulaiDonasiScreen()
+        MulaiDonasiScreen(rememberNavController())
     }
 }

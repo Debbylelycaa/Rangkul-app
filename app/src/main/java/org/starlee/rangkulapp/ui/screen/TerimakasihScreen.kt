@@ -31,11 +31,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
+import org.starlee.rangkulapp.navigation.Screen
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @Composable
-fun TerimakasihScreen() {
+fun TerimakasihScreen(navController: NavHostController) {
     val blue = Color(0xFFA4E8FF)
     val backgroundclr = Color(0xFFE5EFF4)
 
@@ -47,12 +50,14 @@ fun TerimakasihScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Card(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp),
             colors = CardDefaults.cardColors(containerColor = backgroundclr),
             border = null
         ) {
             IconButton(
-                onClick = { },
+                onClick = { navController.popBackStack() },
                 modifier = Modifier
                     .padding(10.dp)
                     .background(
@@ -70,7 +75,9 @@ fun TerimakasihScreen() {
         Spacer(modifier = Modifier.height(200.dp))
 
         Card(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 30.dp), // Add horizontal padding here
             colors = CardDefaults.cardColors(containerColor = Color.White)
         ) {
             Column(
@@ -84,6 +91,7 @@ fun TerimakasihScreen() {
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,
                 )
+                Spacer(modifier = Modifier.height(10.dp))
 
                 // Menyisipkan gambar di sini
                 Image(
@@ -102,17 +110,16 @@ fun TerimakasihScreen() {
                     Text(
                         text = stringResource(R.string.jumlahdonasiterkirim),
                         textAlign = TextAlign.Center,
-//                        fontWeight = FontWeight.Bold,
                         modifier = Modifier.fillMaxWidth() // Text occupies full width
                     )
                 }
 
                 Button(
-                    onClick = { /* Aksi saat tombol diklik */ },
+                    onClick = { navController.navigate(Screen.DetailPembayaran.route)  },
                     modifier = Modifier
                         .padding(vertical = 8.dp)
                         .background(blue, RoundedCornerShape(10.dp)), // Set background color to blue with rounded corners
-                    colors = ButtonDefaults.buttonColors(contentColor = Color.Black), // Set text color to white
+                    colors = ButtonDefaults.buttonColors(contentColor = Color.Black), // Set text color to black
                 ) {
                     Text(
                         text = stringResource(R.string.detailPembayaran),
@@ -126,8 +133,8 @@ fun TerimakasihScreen() {
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
-fun TerimakasihScreenPreview(){
+fun TerimakasihScreenPreview() {
     RangkulAppTheme {
-        TerimakasihScreen()
+        TerimakasihScreen(rememberNavController())
     }
 }

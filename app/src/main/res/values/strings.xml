@@ -12,7 +12,7 @@
     <string name="Mandiri">Mandiri 1310018055170</string>
     <string name="debby">" Debby Lelyca"</string>
     <string name="dianne">Dianne Dini Al-haq</string>
-    <string name="opsianonim">Sembunyikan nama saya (donasi sebagai anonim)</string>
+    <string name="opsianonim">Sembunyikan nama saya \n(donasi sebagai anonim)</string>
     <string name="asa">Berdoa di donasi ini (opsional)</string>
     <string name="berhasil">Pembayaran Berhasil</string>
     <string name="pembayaranberhasilimg">pembayaran berhasil</string>
@@ -32,5 +32,5 @@
     <string name="id">ID Donasi</string>
     <string name="iddonasi">#104513166</string>
     <string name="stts">Status</string>
-    <string name="statusBerhasil">Berhasil</string>
+    <string name="statusBerhasil"> Berhasil </string>
 </resources>

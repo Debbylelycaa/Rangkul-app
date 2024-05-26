@@ -1,3 +1,4 @@
+package org.starlee.rangkulapp.ui.screen
 
 import android.content.res.Configuration
 import androidx.compose.foundation.BorderStroke
@@ -43,11 +44,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @Composable
-fun TransferScreen() {
+fun TransferScreen(navController: NavHostController) {
     val blue = Color(0xFFA4E8FF)
     val backgroundclr = Color(0xFFE5EFF4)
     val darkenblue = Color(0xFF427CBF)
@@ -60,12 +63,14 @@ fun TransferScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Card(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp),
             colors = CardDefaults.cardColors(containerColor = backgroundclr),
             border = null
         ) {
             IconButton(
-                onClick = { },
+                onClick = { navController.popBackStack() },
                 modifier = Modifier
                     .padding(10.dp)
                     .background(
@@ -83,7 +88,9 @@ fun TransferScreen() {
         Spacer(modifier = Modifier.height(180.dp))
 
         Card(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 30.dp), // Add horizontal padding here
             colors = CardDefaults.cardColors(containerColor = Color.White)
         ) {
             Column(
@@ -99,10 +106,10 @@ fun TransferScreen() {
                 )
 
                 // Defined value and onValueChange for OutlinedTextField
-                val nominal = ""
+                var nominal by remember { mutableStateOf("") }
                 OutlinedTextField(
                     value = nominal,
-                    onValueChange = {}, // Dummy function for now
+                    onValueChange = { nominal = it },
                     label = {
                         Text(
                             text = stringResource(R.string.nominalsepuluh),
@@ -170,7 +177,7 @@ fun TransferScreen() {
                             checked = isChecked,
                             onCheckedChange = { isChecked = it },
                             modifier = Modifier
-                                .size(6.dp)
+                                .size(1.dp)
                                 .border(BorderStroke(0.dp, Color.Transparent)),
                             colors = SwitchDefaults.colors(
                                 checkedThumbColor = darkenblue,
@@ -199,10 +206,10 @@ fun TransferScreen() {
                         )
                     }
                     Spacer(modifier = Modifier.height(15.dp))
-                    val asa = ""
+                    var asa by remember { mutableStateOf("") }
                     OutlinedTextField(
                         value = asa,
-                        onValueChange = {}, // Dummy function for now
+                        onValueChange = { asa = it },
                         keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
                         modifier = Modifier
                             .fillMaxWidth()
@@ -210,7 +217,7 @@ fun TransferScreen() {
                     )
                 }
                 Button(
-                    onClick = { /* Aksi saat tombol diklik */ },
+                    onClick = {  },
                     modifier = Modifier
                         .padding(vertical = 8.dp)
                         .background(blue, RoundedCornerShape(10.dp)),
@@ -230,6 +237,6 @@ fun TransferScreen() {
 @Composable
 fun TransferScreenPreview(){
     RangkulAppTheme {
-        TransferScreen()
+        TransferScreen(rememberNavController())
     }
 }
