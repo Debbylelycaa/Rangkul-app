@@ -33,4 +33,10 @@
     <string name="iddonasi">#104513166</string>
     <string name="stts">Status</string>
     <string name="statusBerhasil"> Berhasil </string>
+    <string name="ahmadyani">Yayasan Panti Asuhan Ahmad Yani</string>
+    <string name="nominaltotal">Rp 3.200.000 \nTerkumpul</string>
+    <string name="sisahari">203 \nHari lagi</string>
+    <string name="alamat">Bandung, Indonesia</string>
+    <string name="donasi">Donasi</string>
+    <string name="karyaanakperdamaian">Panti Asuhan Karya Anak Perdamaian</string>
 </resources>
