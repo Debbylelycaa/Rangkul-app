@@ -58,17 +58,23 @@ fun TerimakasihScreen(navController: NavHostController) {
             border = null
         ) {
             IconButton(
-                onClick = { navController.popBackStack() },
+                onClick = { },
                 modifier = Modifier
-                    .padding(10.dp)
-                    .background(
-                        Color.White,
-                        RoundedCornerShape(90.dp)
-                    ),
+                    .padding(start = 10.dp, end = 4.dp)
+                    .size(28.dp) // Adjusted size for smaller button
+
             ) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = stringResource(R.string.back)
+                    contentDescription = stringResource(R.string.back),
+                    modifier = Modifier
+                        .size(30.dp) // Adjusted size for smaller button
+                        .background(
+                            Color.White,
+                            RoundedCornerShape(100.dp) // Adjusted rounding for smaller button
+                        )
+                        .padding(5.dp)
+
                 )
             }
         }

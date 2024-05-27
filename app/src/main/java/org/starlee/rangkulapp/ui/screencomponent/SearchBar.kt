@@ -2,8 +2,11 @@ package org.starlee.rangkulapp.ui.screencomponent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
@@ -27,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import org.starlee.rangkulapp.R
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
@@ -63,7 +67,7 @@ fun SearchBar(){
                     active = active,
                     onActiveChange = { active = it },
                     placeholder = {
-                        Text(text = stringResource(id = R.string.cari_panti), color = bg)
+                        Text(text = stringResource(id = R.string.cari_panti), color = bg, fontSize = 12.sp)
                     },
                     leadingIcon = {
                         Icon(imageVector = Icons.Filled.Search, contentDescription = "Search", tint = Color.White)
@@ -83,7 +87,8 @@ fun SearchBar(){
                                 }
                             }
                         }
-                    }
+                    },
+                    modifier = Modifier.height(45.dp)
                 ) {
 
                  //   searchHistory.takeLast(3).forEach { item ->
@@ -100,7 +105,7 @@ fun SearchBar(){
                     }
 
                 }
-//                Spacer(modifier = Modifier.width(8.dp)) // Spacer untuk memberikan jarak antara teks dan ikon selanjutnya
+                Spacer(modifier = Modifier.width(8.dp)) // Spacer untuk memberikan jarak antara teks dan ikon selanjutnya
 //                IconButton(
 //                    onClick = {
 //                        // Tindakan yang diambil ketika ikon di klik

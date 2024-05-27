@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.ui.screen.BerandaScreen
+import org.starlee.rangkulapp.ui.screen.DetailDonasiScreen
 import org.starlee.rangkulapp.ui.screen.DetailPembayaranScreen
 import org.starlee.rangkulapp.ui.screen.DonasiScreen
 import org.starlee.rangkulapp.ui.screen.InfoPenggalanganDanaScreen
@@ -44,6 +45,9 @@ fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
         }
         composable(route = Screen.RangkulAsa.route){
             RangkulAsaScreen(navController)
+        }
+        composable(route = Screen.DetailDonasi.route){
+            DetailDonasiScreen(navController)
         }
     }
 }

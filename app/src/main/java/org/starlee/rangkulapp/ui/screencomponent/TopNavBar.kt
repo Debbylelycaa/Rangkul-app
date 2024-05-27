@@ -101,16 +101,21 @@ fun TopNavBar2(
             IconButton(
                 onClick = { },
                 modifier = Modifier
-                    .padding(start = 18.dp, end = 4.dp)
-                    .size(32.dp) // Adjusted size for smaller button
-                    .background(
-                        Color.White,
-                        RoundedCornerShape(100.dp) // Adjusted rounding for smaller button
-                    ),
+                    .padding(start = 10.dp, end = 4.dp)
+                    .size(28.dp) // Adjusted size for smaller button
+
             ) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
                     contentDescription = stringResource(R.string.back),
+                    modifier = Modifier
+                        .size(30.dp) // Adjusted size for smaller button
+                        .background(
+                            Color.White,
+                            RoundedCornerShape(100.dp) // Adjusted rounding for smaller button
+                        )
+                        .padding(5.dp)
+
                     )
             }
 

@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -72,17 +73,23 @@ fun MulaiDonasiScreen(navController: NavHostController) {
             border = null
         ) {
             IconButton(
-                onClick = { navController.popBackStack() },
+                onClick = { },
                 modifier = Modifier
-                    .padding(1.dp)
-                    .background(
-                        Color.White,
-                        RoundedCornerShape(90.dp)
-                    ),
+                    .padding(start = 10.dp, end = 4.dp)
+                    .size(28.dp) // Adjusted size for smaller button
+
             ) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = stringResource(R.string.back)
+                    contentDescription = stringResource(R.string.back),
+                    modifier = Modifier
+                        .size(30.dp) // Adjusted size for smaller button
+                        .background(
+                            Color.White,
+                            RoundedCornerShape(100.dp) // Adjusted rounding for smaller button
+                        )
+                        .padding(5.dp)
+
                 )
             }
         }
