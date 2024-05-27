@@ -43,6 +43,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
 import org.starlee.rangkulapp.navigation.Screen
+import org.starlee.rangkulapp.ui.screencomponent.Display1
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @Composable
@@ -86,7 +87,7 @@ fun MulaiDonasiScreen(navController: NavHostController) {
             }
         }
 
-        Spacer(modifier = Modifier.height(200.dp))
+        Spacer(modifier = Modifier.height(170.dp))
 
         Card(
             modifier = Modifier
@@ -165,6 +166,7 @@ fun MulaiDonasiScreen(navController: NavHostController) {
             }
         }
     }
+    Display1()
 }
 
 @Preview(showBackground = true)

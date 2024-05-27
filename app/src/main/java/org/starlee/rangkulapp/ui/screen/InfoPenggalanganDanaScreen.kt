@@ -48,7 +48,7 @@ fun InfoPenggalanganDanaScreen (navController: NavHostController){
     ) {
         DisplayTopNavBar2()
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         Column(
             modifier = Modifier.padding(16.dp),
@@ -61,7 +61,7 @@ fun InfoPenggalanganDanaScreen (navController: NavHostController){
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.fillMaxWidth() // Text occupies full width
             )
-            Spacer(modifier = Modifier.height(30.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
             Text(
                 text = stringResource(R.string.infokaryaanakperdamaian),

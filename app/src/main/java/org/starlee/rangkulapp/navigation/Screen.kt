@@ -12,6 +12,8 @@ sealed class Screen (val route: String){
     data object Transfer: Screen("TransferScreen")
 
     data object InfoPenggalanganDana: Screen("InfoPenggalanganDanaScreen")
+    data object Donasi: Screen("DonasiScreen")
 
+    data object RangkulAsa: Screen("RangkulAsaScreen")
 
 }
