@@ -103,7 +103,7 @@ fun DetailDonasiScreen(navController: NavHostController) {
                 Column(
                     modifier = Modifier.padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Text(
                         text = stringResource(R.string.pantinama),
@@ -159,17 +159,14 @@ fun DetailDonasiScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(30.dp))
 
         Button(
-            onClick = { navController.navigate(Screen.Transfer.route) },
+            onClick = {navController.navigate(Screen.Transfer.route)},
             modifier = Modifier
-                .padding(vertical = 4.dp) // Mengurangi padding vertikal
-                .height(28.dp) // Mengatur tinggi button agar lebih slim
+                .padding(vertical = 8.dp)
                 .background(blue, RoundedCornerShape(10.dp)), // Set background color to blue with rounded corners
-            colors = ButtonDefaults.buttonColors(contentColor = Color.Black), // Set text color to black
-            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp) // Mengatur padding agar lebih slim
+            colors = ButtonDefaults.buttonColors(contentColor = Color.Black), // Set text color to white
         ) {
             Text(
                 text = stringResource(R.string.donasisekarang),
-                fontSize = 12.sp // Menyesuaikan ukuran font
             )
         }
         Display1()
