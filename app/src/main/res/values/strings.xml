@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">RangkulApp</string>
-    <string name="back">kembali\n</string>
     <string name="app_name">Rangkul</string>
     <string name="cari_panti">Cari Panti Asuhan</string>
     <string name="back">Kembali</string>
