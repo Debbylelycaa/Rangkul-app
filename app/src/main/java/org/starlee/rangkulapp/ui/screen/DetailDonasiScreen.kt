@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,6 +23,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -34,6 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
@@ -126,16 +129,19 @@ fun DetailDonasiScreen(navController: NavHostController) {
                         onClick = { navController.navigate(Screen.DetailPembayaran.route) },
                         modifier = Modifier
                             .padding(vertical = 8.dp)
-                            .background(blue, RoundedCornerShape(10.dp)),
-                        colors = ButtonDefaults.buttonColors(contentColor = Color.Black)
+                            .height(40.dp), // Mengatur tinggi button agar lebih slim
+                        colors = ButtonDefaults.buttonColors(containerColor = blue, contentColor = Color.Black),
+                        shape = RoundedCornerShape(10.dp),
+                        contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp) // Mengatur padding agar lebih slim
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.baseline_account_balance_wallet_24),
                             contentDescription = null,
+                            modifier = Modifier.size(20.dp) // Mengatur ukuran ikon agar lebih kecil
                         )
-                        Spacer(modifier = Modifier.height(1.dp))
                         Text(
                             text = stringResource(R.string.rendanaaudit),
+                            style = LocalTextStyle.current.copy(fontSize = 14.sp) // Mengatur ukuran teks agar lebih kecil
                         )
                     }
                 }
@@ -153,14 +159,17 @@ fun DetailDonasiScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(30.dp))
 
         Button(
-            onClick = {navController.navigate(Screen.Transfer.route)},
+            onClick = { navController.navigate(Screen.Transfer.route) },
             modifier = Modifier
-                .padding(vertical = 8.dp)
+                .padding(vertical = 4.dp) // Mengurangi padding vertikal
+                .height(28.dp) // Mengatur tinggi button agar lebih slim
                 .background(blue, RoundedCornerShape(10.dp)), // Set background color to blue with rounded corners
-            colors = ButtonDefaults.buttonColors(contentColor = Color.Black), // Set text color to white
+            colors = ButtonDefaults.buttonColors(contentColor = Color.Black), // Set text color to black
+            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp) // Mengatur padding agar lebih slim
         ) {
             Text(
                 text = stringResource(R.string.donasisekarang),
+                fontSize = 12.sp // Menyesuaikan ukuran font
             )
         }
         Display1()

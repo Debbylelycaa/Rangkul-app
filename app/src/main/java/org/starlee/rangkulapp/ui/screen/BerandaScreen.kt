@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -135,8 +136,10 @@ fun BerandaScreen (navController: NavHostController){
                             Spacer(modifier = Modifier.weight(1f)) // Spacer untuk mengisi ruang kosong
 
                             Button(
-                                onClick = {navController.navigate(Screen.MulaiDonasi.route)},
-                                colors = ButtonDefaults.buttonColors(Color.White)
+                                onClick = { navController.navigate(Screen.MulaiDonasi.route) },
+                                colors = ButtonDefaults.buttonColors(Color.White),
+                                modifier = Modifier.height(30.dp), // Mengatur tinggi button agar lebih slim
+                                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp) // Mengatur padding agar lebih slim
                             ) {
                                 Text(
                                     text = stringResource(R.string.donasi),
@@ -145,6 +148,7 @@ fun BerandaScreen (navController: NavHostController){
                                     textAlign = TextAlign.Center
                                 )
                             }
+
                             Spacer(modifier = Modifier.weight(0.5f)) // Spacer untuk mengisi ruang kosong
 
                         }
@@ -221,8 +225,10 @@ fun BerandaScreen (navController: NavHostController){
                             Spacer(modifier = Modifier.weight(1f)) // Spacer untuk mengisi ruang kosong
 
                             Button(
-                                onClick = {navController.navigate(Screen.MulaiDonasi.route)},
-                                colors = ButtonDefaults.buttonColors(Color.White)
+                                onClick = { navController.navigate(Screen.MulaiDonasi.route) },
+                                colors = ButtonDefaults.buttonColors(Color.White),
+                                modifier = Modifier.height(30.dp), // Mengatur tinggi button agar lebih slim
+                                contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp) // Mengatur padding agar lebih slim
                             ) {
                                 Text(
                                     text = stringResource(R.string.donasi),
