@@ -113,6 +113,8 @@ fun PembayaranBerhasilScreen(navController: NavHostController) {
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,
+                    color = Color.Black
+
                 )
                 Spacer(modifier = Modifier.height(10.dp))
 
@@ -120,7 +122,9 @@ fun PembayaranBerhasilScreen(navController: NavHostController) {
                     text = stringResource(R.string.unggahbuktidisini),
                     textAlign = TextAlign.Center,
                     fontSize = 12.sp,
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    color = Color.Black
+
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
@@ -150,7 +154,9 @@ fun PembayaranBerhasilScreen(navController: NavHostController) {
                             text = stringResource(R.string.uploadbuktiimg),
                             modifier = Modifier.fillMaxWidth(),
                             textAlign = TextAlign.Center,
-                            fontSize = 12.sp
+                            fontSize = 12.sp,
+                            color = Color.Black
+
                         )
                     }
                 }

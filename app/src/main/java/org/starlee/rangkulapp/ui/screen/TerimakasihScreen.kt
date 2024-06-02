@@ -97,6 +97,8 @@ fun TerimakasihScreen(navController: NavHostController) {
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,
+                    color = Color.Black
+
                 )
                 Spacer(modifier = Modifier.height(10.dp))
 
@@ -117,7 +119,9 @@ fun TerimakasihScreen(navController: NavHostController) {
                     Text(
                         text = stringResource(R.string.jumlahdonasiterkirim),
                         textAlign = TextAlign.Center,
-                        modifier = Modifier.fillMaxWidth() // Text occupies full width
+                        color = Color.Black
+,
+                                modifier = Modifier.fillMaxWidth() // Text occupies full width
                     )
                 }
 

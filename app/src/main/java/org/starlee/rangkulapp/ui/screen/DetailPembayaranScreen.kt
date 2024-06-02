@@ -99,13 +99,16 @@ fun DetailPembayaranScreen(navController: NavHostController) {
                     modifier = Modifier.fillMaxWidth(),
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,
+                    color = Color.Black
+
                 )
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Text(
                     text = stringResource(R.string.donasiditerima),
                     textAlign = TextAlign.Center,
-                    fontSize = 12.sp, // Set the font size to 16sp
+                    color = Color.Black,
+                            fontSize = 12.sp, // Set the font size to 16sp
                     modifier = Modifier.fillMaxWidth() // Text occupies full width
                 )
 
@@ -125,15 +128,16 @@ fun DetailPembayaranScreen(navController: NavHostController) {
                             Text(
                                 text = stringResource(R.string.tgl),
                                 textAlign = TextAlign.Start,
-                                fontSize = 11.sp,
-                                modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
+                                fontSize = 11.sp,                color = Color.Black,
+                                        modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
                             )
                             Spacer(modifier = Modifier.width(8.dp)) // Spacer untuk memberikan jarak antara teks dan teks selanjutnya
                             Text(
                                 text = stringResource(R.string.tgldonasi),
                                 textAlign = TextAlign.Start,
                                 fontSize = 11.sp,
-                                fontWeight = FontWeight.Bold,
+                                color = Color.Black,
+                                        fontWeight = FontWeight.Bold,
                                 modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
                             )
                         }
@@ -142,14 +146,16 @@ fun DetailPembayaranScreen(navController: NavHostController) {
                                 text = stringResource(R.string.mtd),
                                 textAlign = TextAlign.Start,
                                 fontSize = 11.sp,
-                                modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
+                                color = Color.Black,
+                                        modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
                             )
                             Spacer(modifier = Modifier.width(8.dp)) // Spacer untuk memberikan jarak antara teks dan teks selanjutnya
                             Text(
                                 text = stringResource(R.string.pembayaranmethod),
                                 textAlign = TextAlign.Start,
                                 fontSize = 11.sp,
-                                fontWeight = FontWeight.Bold,
+                                color = Color.Black,
+                                        fontWeight = FontWeight.Bold,
                                 modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
                             )
                         }
@@ -158,14 +164,16 @@ fun DetailPembayaranScreen(navController: NavHostController) {
                                 text = stringResource(R.string.id),
                                 textAlign = TextAlign.Start,
                                 fontSize = 11.sp,
-                                modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
+                                color = Color.Black,
+                                        modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
                             )
                             Spacer(modifier = Modifier.width(8.dp)) // Spacer untuk memberikan jarak antara teks dan teks selanjutnya
                             Text(
                                 text = stringResource(R.string.iddonasi),
                                 textAlign = TextAlign.Start,
                                 fontSize = 11.sp,
-                                fontWeight = FontWeight.Bold,
+                                color = Color.Black,
+                                        fontWeight = FontWeight.Bold,
                                 modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
                             )
                         }
@@ -174,14 +182,16 @@ fun DetailPembayaranScreen(navController: NavHostController) {
                                 text = stringResource(R.string.stts),
                                 textAlign = TextAlign.Start,
                                 fontSize = 11.sp,
-                                modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
+                                color = Color.Black,
+                                        modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
                             )
                             Spacer(modifier = Modifier.width(8.dp)) // Spacer untuk memberikan jarak antara teks dan teks selanjutnya
                             Text(
                                 text = stringResource(R.string.statusBerhasil),
                                 textAlign = TextAlign.Start,
                                 fontSize = 11.sp,
-                                modifier = Modifier
+                                color = Color.Black,
+                                        modifier = Modifier
                                     .background(blue, RoundedCornerShape(90.dp))
                                     .padding(2.dp) // Memanfaatkan ruang sebanyak mungkin
                             )

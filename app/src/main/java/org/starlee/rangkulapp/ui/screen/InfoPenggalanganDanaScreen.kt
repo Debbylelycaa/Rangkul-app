@@ -59,14 +59,17 @@ fun InfoPenggalanganDanaScreen (navController: NavHostController){
                 text = stringResource(R.string.infopenggalangandana),
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.fillMaxWidth() // Text occupies full width
+                color = Color.Black,
+                        modifier = Modifier.fillMaxWidth() // Text occupies full width
             )
             Spacer(modifier = Modifier.height(20.dp))
 
             Text(
                 text = stringResource(R.string.infokaryaanakperdamaian),
                 textAlign = TextAlign.Start,
-                fontSize = 10.sp,
+                color = Color.Black
+,
+                        fontSize = 10.sp,
                 modifier = Modifier.fillMaxWidth() // Text occupies full width
             )
         }

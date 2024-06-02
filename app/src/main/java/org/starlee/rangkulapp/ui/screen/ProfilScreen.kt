@@ -24,7 +24,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Key
-import androidx.compose.material.icons.filled.PersonPin
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.PersonPin
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -51,10 +50,7 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
-<<<<<<< HEAD
-=======
 import org.starlee.rangkulapp.navigation.Screen
->>>>>>> origin/profil
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -150,11 +146,7 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     HoverButton(
-<<<<<<< HEAD
-                        onClick = { },
-=======
                         onClick = { navController.navigate(Screen.EditProfil.route) },
->>>>>>> origin/profil
                         modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp))
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -168,11 +160,8 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                     HoverButton(
-<<<<<<< HEAD
-                        onClick = {  },
-=======
+
                         onClick = { navController.navigate(Screen.Email.route) },
->>>>>>> origin/profil
                         modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp))
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -186,11 +175,7 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                     HoverButton(
-<<<<<<< HEAD
-                        onClick = { },
-=======
                         onClick = { navController.navigate(Screen.About.route) },
->>>>>>> origin/profil
                         modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp))
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {

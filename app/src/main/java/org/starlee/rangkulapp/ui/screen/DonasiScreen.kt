@@ -66,7 +66,8 @@ fun DonasiScreen (navController: NavHostController){
                 text = stringResource(R.string.donatur),
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.fillMaxWidth() // Text occupies full width
+                color = Color.Black,
+                        modifier = Modifier.fillMaxWidth() // Text occupies full width
             )
             Text(
                 text = stringResource(R.string.jlhdonatur),
@@ -103,6 +104,7 @@ fun DonasiScreen (navController: NavHostController){
                                 textAlign = TextAlign.Start,
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
+                                color = Color.Black
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                             Text(
@@ -161,6 +163,8 @@ fun DonasiScreen (navController: NavHostController){
                                 textAlign = TextAlign.Start,
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
+                                color = Color.Black
+
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                             Text(
@@ -219,6 +223,8 @@ fun DonasiScreen (navController: NavHostController){
                                 textAlign = TextAlign.Start,
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
+                                color = Color.Black
+
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                             Text(

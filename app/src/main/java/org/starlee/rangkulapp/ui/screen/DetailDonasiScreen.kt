@@ -112,6 +112,7 @@ fun DetailDonasiScreen(navController: NavHostController) {
                         modifier = Modifier.fillMaxWidth(),
                         textAlign = TextAlign.Center,
                         fontWeight = FontWeight.Bold,
+                        color = Color.Black
                     )
                     Spacer(modifier = Modifier.height(10.dp))
 

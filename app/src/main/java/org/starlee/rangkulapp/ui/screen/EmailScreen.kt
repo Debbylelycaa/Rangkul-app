@@ -207,11 +207,7 @@ fun EmailContent(modifier: Modifier, navController: NavHostController) {
             )
             Spacer(modifier = Modifier.height(40.dp))
             Button(
-<<<<<<< HEAD
-                onClick = {  },
-=======
                 onClick = { navController.navigate(Screen.GantiKataSandi.route) },
->>>>>>> origin/profil
                 modifier = Modifier
                     .width(135.dp)
                     .height(40.dp)

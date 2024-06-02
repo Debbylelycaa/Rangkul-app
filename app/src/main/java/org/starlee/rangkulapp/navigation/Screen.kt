@@ -13,4 +13,11 @@ sealed class Screen (val route: String){
     data object DetailDonasi: Screen("DetailDonasiScreen") // Perbaikan disini
     data object RangkulPeduli: Screen("RangkulPeduliScreen")
     data object DetailRangkulPeduli: Screen("DetailRangkulPeduliScreen")
+    data object GantiKataSandi: Screen("GantiKataSandiScreen")
+    data object Email: Screen("EmailScreen")
+
+    data object About: Screen("AboutScreen")
+    data object EditProfil: Screen("EditProfilScreen")
+    data object Profil: Screen("ProfilScreen")
+
 }
