@@ -52,6 +52,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
+import org.starlee.rangkulapp.navigation.Screen
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -206,7 +207,11 @@ fun EmailContent(modifier: Modifier, navController: NavHostController) {
             )
             Spacer(modifier = Modifier.height(40.dp))
             Button(
+<<<<<<< HEAD
                 onClick = {  },
+=======
+                onClick = { navController.navigate(Screen.GantiKataSandi.route) },
+>>>>>>> origin/profil
                 modifier = Modifier
                     .width(135.dp)
                     .height(40.dp)

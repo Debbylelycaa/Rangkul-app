@@ -58,4 +58,10 @@
     <string name="isiasa">Semoga bisa membantu panti dalam merawat para penghuni panti. Untuk orang-orang baik, tolong doakan semoga saya lulus Politeknik, Aamiinn...</string>
     <string name="detail">Detail</string>
     <string name="voluntrip">Voluntrip By Kitabisa</string>
+    <string name="tentang_aplikasi">Tentang Aplikasi</string>
+    <string name="logoabout">Image %1$s</string>
+    <string name="copyright">Rangkul merupakan platform crowdfunding yang menjadi jembatan bagi pengguna dalam berdonasi kepada anak-anak yatim di berbagai panti asuhan, sehingga anak-anak yatim bisa mendapatkan kesempatan yang sama dalam mengemban pendidikan, hubungan sosial, dan kehidupan yang layak.</string>
+    <string name="kembali">Kembali</string>
+    <string name="ganti_kata_sandi">Ganti kata sandi</string>
+    <string name="edit_profil">Edit Profil</string>
 </resources>
