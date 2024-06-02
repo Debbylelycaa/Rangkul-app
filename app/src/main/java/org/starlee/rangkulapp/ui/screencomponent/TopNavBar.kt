@@ -35,7 +35,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
+import org.starlee.rangkulapp.navigation.Screen
 
 val list1 = listOf(
     NavBarItem(
@@ -59,27 +62,25 @@ data class NavBarItem(
 
 @Preview
 @Composable
-fun DisplayTopNavBar1(){
+fun DisplayTopNavBar1(navController: NavHostController = rememberNavController()) {
     Column {
-//        TopNavBar2(1, list1)
-//        Spacer(modifier = Modifier.height(4.dp)) // Spacer kecil untuk memberikan jarak antara ikon dan teks
-        TopNavBar1(1, list1)
+        TopNavBar1(1, list1, navController)
     }
 }
+
 @Composable
-fun DisplayTopNavBar2(){
+fun DisplayTopNavBar2(navController: NavHostController = rememberNavController()) {
     Column {
-        TopNavBar2(1, list1)
-//        Spacer(modifier = Modifier.height(4.dp)) // Spacer kecil untuk memberikan jarak antara ikon dan teks
-//        TopNavBar1(1, list1)
+        TopNavBar2(1, list1, navController)
     }
 }
 
 @Composable
 fun TopNavBar2(
     defaultSelectedIndex: Int = 0,
-    list: List<NavBarItem>
-){
+    list: List<NavBarItem>,
+    navController: NavHostController
+) {
     val linearGradientBrush = Brush.horizontalGradient(
         colors = listOf(Color(0xFF87E1FF), Color(0xFF3F72AF))
     )
@@ -89,7 +90,7 @@ fun TopNavBar2(
             .fillMaxWidth()
             .height(65.dp)
             .background(Color(0xFF82DEFF), RoundedCornerShape(0.1.dp))
-    ){
+    ) {
         var selectedIndex by remember {
             mutableIntStateOf(defaultSelectedIndex)
         }
@@ -97,26 +98,24 @@ fun TopNavBar2(
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxSize()
-        ){
+        ) {
             IconButton(
-                onClick = { },
+                onClick = { navController.navigateUp() }, // Navigasi kembali
                 modifier = Modifier
                     .padding(start = 10.dp, end = 4.dp)
-                    .size(28.dp) // Adjusted size for smaller button
-
+                    .size(28.dp)
             ) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
                     contentDescription = stringResource(R.string.back),
                     modifier = Modifier
-                        .size(30.dp) // Adjusted size for smaller button
+                        .size(30.dp)
                         .background(
                             Color.White,
-                            RoundedCornerShape(100.dp) // Adjusted rounding for smaller button
+                            RoundedCornerShape(100.dp)
                         )
                         .padding(5.dp)
-
-                    )
+                )
             }
 
             list.forEachIndexed { index, navItem ->
@@ -126,10 +125,15 @@ fun TopNavBar2(
                         .weight(1f)
                         .clickable {
                             selectedIndex = index
+                            // Navigasi ke rute yang sesuai
+                            when (index) {
+                                0 -> navController.navigate(Screen.InfoPenggalanganDana.route)
+                                1 -> navController.navigate(Screen.Donasi.route)
+                                2 -> navController.navigate(Screen.RangkulAsa.route)
+                            }
                         },
                     contentAlignment = Center
                 ) {
-
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
@@ -140,7 +144,7 @@ fun TopNavBar2(
                             tint = Color.Unspecified
                         )
 
-                        Spacer(modifier = Modifier.height(4.dp)) // Spacer kecil untuk memberikan jarak antara ikon dan teks
+                        Spacer(modifier = Modifier.height(4.dp))
 
                         Text(
                             navItem.title,
@@ -154,60 +158,62 @@ fun TopNavBar2(
     }
 }
 
+    @Composable
+    fun TopNavBar1(
+        defaultSelectedIndex: Int = 0,
+        list: List<NavBarItem>,
+        navController: NavHostController
+    ) {
+        Box(
+            Modifier
+                .fillMaxWidth()
+                .height(90.dp)
+                .background(Color.White, RoundedCornerShape(10.dp))
+        ) {
+            var selectedIndex by remember {
+                mutableIntStateOf(defaultSelectedIndex)
+            }
 
-@Composable
-fun TopNavBar1(
-    defaultSelectedIndex: Int = 0,
-    list: List<NavBarItem>
-){
-
-    Box(
-        Modifier
-            .fillMaxWidth()
-            .height(90.dp)
-            .background(Color.White, RoundedCornerShape(10.dp))
-    ){
-        var selectedIndex by remember {
-            mutableIntStateOf(defaultSelectedIndex)
-        }
-
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxSize()
-        ){
-
-
-            list.forEachIndexed { index, navItem ->
-                Box(
-                    Modifier
-                        .fillMaxHeight()
-                        .weight(1f)
-                        .clickable {
-                            selectedIndex = index
-                        },
-                    contentAlignment = Center
-                ) {
-
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxSize()
+            ) {
+                list.forEachIndexed { index, navItem ->
+                    Box(
+                        Modifier
+                            .fillMaxHeight()
+                            .weight(1f)
+                            .clickable {
+                                selectedIndex = index
+                                // Navigasi ke rute yang sesuai
+                                when (index) {
+                                    0 -> navController.navigate(Screen.InfoPenggalanganDana.route)
+                                    1 -> navController.navigate(Screen.Donasi.route)
+                                    2 -> navController.navigate(Screen.RangkulAsa.route)
+                                }
+                            },
+                        contentAlignment = Center
                     ) {
-                        Icon(
-                            painterResource(navItem.icon),
-                            contentDescription = null,
-                            Modifier.size(24.dp),
-                            tint = Color.Unspecified
-                        )
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Icon(
+                                painterResource(navItem.icon),
+                                contentDescription = null,
+                                Modifier.size(24.dp),
+                                tint = Color.Unspecified
+                            )
 
-                        Spacer(modifier = Modifier.height(4.dp)) // Spacer kecil untuk memberikan jarak antara ikon dan teks
+                            Spacer(modifier = Modifier.height(4.dp))
 
-                        Text(
-                            navItem.title,
-                            color = Color.Black,
-                            fontSize = 12.sp
-                        )
+                            Text(
+                                navItem.title,
+                                color = Color.Black,
+                                fontSize = 12.sp
+                            )
+                        }
                     }
                 }
             }
         }
     }
-}

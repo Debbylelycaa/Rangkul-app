@@ -36,12 +36,11 @@ import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
 import org.starlee.rangkulapp.navigation.Screen
 import org.starlee.rangkulapp.ui.screencomponent.Display1
-import org.starlee.rangkulapp.ui.screencomponent.DisplaySlider
 import org.starlee.rangkulapp.ui.screencomponent.SearchBar
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @Composable
-fun BerandaScreen(navController: NavHostController) {
+fun RangkulPeduliScreen (navController: NavHostController){
     val gradientBrush = Brush.horizontalGradient(
         colors = listOf(Color(0xFF50D1FF), Color(0xFFBDE2EF), Color(0xFFBDE2EF))
     )
@@ -52,8 +51,16 @@ fun BerandaScreen(navController: NavHostController) {
             .background(Color.White),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+//        Image(
+//            painter = painterResource(id = R.drawable.rangkulpeduli),
+//            contentDescription = null,
+////            contentScale = ContentScale.Crop,
+//            modifier = Modifier
+//                .width(439.dp)
+//                .height(130.dp)
+//        )
         SearchBar()
-        DisplaySlider()
 
         Spacer(modifier = Modifier.height(30.dp))
 
@@ -63,31 +70,13 @@ fun BerandaScreen(navController: NavHostController) {
                 .padding(horizontal = 20.dp),
             colors = CardDefaults.cardColors(containerColor = Color.Transparent),
             elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-            shape = RoundedCornerShape(8.dp)
+            shape = RoundedCornerShape(8.dp) // Atur sesuai dengan kebutuhan
         ) {
             Column(
                 modifier = Modifier.background(gradientBrush),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                PantiAsuhanCardContent(navController)
-            }
-        }
-
-        Spacer(modifier = Modifier.height(30.dp))
-
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 20.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.Transparent),
-            elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-            shape = RoundedCornerShape(8.dp)
-        ) {
-            Column(
-                modifier = Modifier.background(gradientBrush),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                PantiAsuhanCardContent(navController)
+                RangkulPeduliCardContent(rememberNavController())
             }
         }
         Display1()
@@ -95,11 +84,11 @@ fun BerandaScreen(navController: NavHostController) {
 }
 
 @Composable
-fun PantiAsuhanCardContent(navController: NavHostController) {
+fun RangkulPeduliCardContent(navController: NavHostController) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Image(
             painter = painterResource(id = R.drawable.paahmadyani),
-            contentDescription = stringResource(R.string.ahmadyani),
+            contentDescription = stringResource(R.string.voluntrip),
             alignment = Alignment.TopStart,
             modifier = Modifier.size(137.dp)
         )
@@ -118,6 +107,27 @@ fun PantiAsuhanCardContent(navController: NavHostController) {
 
             Row {
                 Text(
+                    text = stringResource(R.string.nominaltotal),
+                    textAlign = TextAlign.Start,
+                    fontSize = 10.sp,
+                    color = Color(0xFF427CBF),
+                    modifier = Modifier.weight(1f)
+                )
+
+                Text(
+                    text = stringResource(R.string.sisahari),
+                    textAlign = TextAlign.End,
+                    fontSize = 10.sp,
+                    color = Color(0xFF427CBF),
+                    modifier = Modifier.weight(1f)
+                )
+                Spacer(modifier = Modifier.width(18.dp))
+            }
+
+            Spacer(modifier = Modifier.padding(5.dp))
+
+            Row {
+                Text(
                     text = stringResource(R.string.alamat),
                     textAlign = TextAlign.Center,
                     fontSize = 11.sp,
@@ -126,13 +136,13 @@ fun PantiAsuhanCardContent(navController: NavHostController) {
                 Spacer(modifier = Modifier.weight(1f))
 
                 Button(
-                    onClick = { navController.navigate(Screen.DetailDonasi.route) },
+                    onClick = {navController.navigate(Screen.DetailRangkulPeduli.route) },
                     colors = ButtonDefaults.buttonColors(Color.White),
                     modifier = Modifier.height(30.dp),
                     contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)
                 ) {
                     Text(
-                        text = stringResource(R.string.donasi),
+                        text = stringResource(R.string.detail),
                         fontSize = 10.sp,
                         color = Color.Black,
                         textAlign = TextAlign.Center
@@ -144,12 +154,11 @@ fun PantiAsuhanCardContent(navController: NavHostController) {
         }
     }
 }
-
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
-fun BerandaScreenPreview() {
+fun RangkulPeduliScreenPreview(){
     RangkulAppTheme {
-        BerandaScreen(rememberNavController())
+        RangkulPeduliScreen(rememberNavController())
     }
 }

@@ -87,7 +87,7 @@ fun RangkulAsaScreen (navController: NavHostController){
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Row (verticalAlignment = Alignment.CenterVertically){
+                    Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(
                             painter = painterResource(R.drawable.ic_sahabatbaik),
                             contentDescription = null,
@@ -105,13 +105,6 @@ fun RangkulAsaScreen (navController: NavHostController){
                                 fontWeight = FontWeight.Bold,
                             )
                             Spacer(modifier = Modifier.width(10.dp))
-                            Text(
-                                text = stringResource(R.string.donasisebesar),
-                                textAlign = TextAlign.Start,
-                                fontSize = 10.sp,
-                                color = Color(0xFF427CBF),
-                            )
-                            Spacer(modifier = Modifier.width(10.dp))
                             Row {
                                 Icon(
                                     painter = painterResource(R.drawable.baseline_history_24),
@@ -126,130 +119,25 @@ fun RangkulAsaScreen (navController: NavHostController){
                                     color = Color(0xFF427CBF),
                                 )
                             }
-
-
-                        }
-
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(containerColor = Color(0xFFD2F4FF)),
-            ) {
-                Column(
-                    modifier = Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Row (verticalAlignment = Alignment.CenterVertically){
-                        Icon(
-                            painter = painterResource(R.drawable.ic_sahabatbaik),
-                            contentDescription = null,
-                            Modifier.size(60.dp),
-                            tint = Color.Unspecified,
-                        )
-                        Spacer(modifier = Modifier.width(10.dp)) // Spacer untuk memberikan jarak antara teks dan teks selanjutnya
-
-                        Column {
-                            Spacer(modifier = Modifier.width(10.dp)) // Spacer untuk memberikan jarak antara teks dan teks selanjutnya
-                            Text(
-                                text = stringResource(R.string.shbtbaik),
-                                textAlign = TextAlign.Start,
-                                fontSize = 11.sp,
-                                fontWeight = FontWeight.Bold,
-                            )
                             Spacer(modifier = Modifier.width(10.dp))
+
                             Text(
-                                text = stringResource(R.string.donasisebesar),
+                                text = stringResource(R.string.isiasa),
                                 textAlign = TextAlign.Start,
                                 fontSize = 10.sp,
-                                color = Color(0xFF427CBF),
+                                color = Color(0xFF000000),
+                                modifier = Modifier.fillMaxWidth(), // Text occupies full width
+                                style = androidx.compose.ui.text.TextStyle(
+                                    lineHeight = 15.sp // Set line height to 20 sp
+                                )
                             )
-                            Spacer(modifier = Modifier.width(10.dp))
-                            Row {
-                                Icon(
-                                    painter = painterResource(R.drawable.baseline_history_24),
-                                    contentDescription = null,
-                                    Modifier.size(15.dp),
-                                    tint = Color.Unspecified,
-                                )
-                                Text(
-                                    text = stringResource(R.string.menit),
-                                    textAlign = TextAlign.Start,
-                                    fontSize = 9.sp,
-                                    color = Color(0xFF427CBF),
-                                )
-                            }
-
-
-                        }
-
-                    }
-                }
-            }
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                colors = CardDefaults.cardColors(containerColor = Color(0xFFD2F4FF)),
-            ) {
-                Column(
-                    modifier = Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Row (verticalAlignment = Alignment.CenterVertically){
-                        Icon(
-                            painter = painterResource(R.drawable.ic_sahabatbaik),
-                            contentDescription = null,
-                            Modifier.size(60.dp),
-                            tint = Color.Unspecified,
-                        )
-                        Spacer(modifier = Modifier.width(10.dp)) // Spacer untuk memberikan jarak antara teks dan teks selanjutnya
-
-                        Column {
-                            Spacer(modifier = Modifier.width(10.dp)) // Spacer untuk memberikan jarak antara teks dan teks selanjutnya
-                            Text(
-                                text = stringResource(R.string.shbtbaik),
-                                textAlign = TextAlign.Start,
-                                fontSize = 11.sp,
-                                fontWeight = FontWeight.Bold,
-                            )
-                            Spacer(modifier = Modifier.width(10.dp))
-                            Text(
-                                text = stringResource(R.string.donasisebesar),
-                                textAlign = TextAlign.Start,
-                                fontSize = 10.sp,
-                                color = Color(0xFF427CBF),
-                            )
-                            Spacer(modifier = Modifier.width(10.dp))
-                            Row {
-                                Icon(
-                                    painter = painterResource(R.drawable.baseline_history_24),
-                                    contentDescription = null,
-                                    Modifier.size(15.dp),
-                                    tint = Color.Unspecified,
-                                )
-                                Text(
-                                    text = stringResource(R.string.menit),
-                                    textAlign = TextAlign.Start,
-                                    fontSize = 9.sp,
-                                    color = Color(0xFF427CBF),
-                                )
-                            }
-
-
                         }
 
                     }
                 }
             }
         }
+
         Spacer(modifier = Modifier.height(120.dp))
 
         Button(

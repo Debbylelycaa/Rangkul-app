@@ -73,7 +73,7 @@ fun MulaiDonasiScreen(navController: NavHostController) {
             border = null
         ) {
             IconButton(
-                onClick = { },
+                onClick = { navController.popBackStack() },
                 modifier = Modifier
                     .padding(start = 10.dp, end = 4.dp)
                     .size(28.dp) // Adjusted size for smaller button
@@ -115,15 +115,14 @@ fun MulaiDonasiScreen(navController: NavHostController) {
                 )
 
                 // Defined value and onValueChange for OutlinedTextField
-                val value = ""
                 OutlinedTextField(
-                    value = value,
-                    onValueChange = {}, // Dummy function for now
+                    value = selectedNominal.value,
+                    onValueChange = { selectedNominal.value = it },
                     label = { Text(text = stringResource(R.string.minimal_donasi)) },
                     keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .border(border = BorderStroke(1.dp, blue))
+                        .border(border = BorderStroke(1.dp, blue)),
                 )
                 Column(
                     modifier = Modifier
@@ -175,6 +174,7 @@ fun MulaiDonasiScreen(navController: NavHostController) {
     }
     Display1()
 }
+
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)

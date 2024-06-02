@@ -1,0 +1,237 @@
+package org.starlee.rangkulapp.ui.screen
+
+import android.content.res.Configuration
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import org.starlee.rangkulapp.R
+import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun EmailScreen(navController: NavHostController) {
+
+    val customColor = colorResource(id = R.color.custom_blue)
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier
+                                .size(33.dp)
+                                .background(Color.White, shape = CircleShape)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.ArrowBack,
+                                contentDescription = stringResource(R.string.kembali),
+                                tint = Color.Black
+                            )
+                        }
+                    }
+                },
+                title = {
+                    Text(
+                        text = stringResource(id = R.string.ganti_kata_sandi),
+                        style = TextStyle(
+                            fontWeight = FontWeight.Bold,
+                            color = Color.Black,
+                            fontSize = 15.sp
+                        ),
+                        modifier = Modifier.padding(start = 16.dp)
+                    )
+                },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = customColor,
+                    titleContentColor = customColor,
+                )
+            )
+        }
+    ) { padding ->
+        EmailContent(Modifier.padding(padding), navController)
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun EmailContent(modifier: Modifier, navController: NavHostController) {
+
+    val emailState = remember { mutableStateOf("") }
+    val passwordState = remember { mutableStateOf("") }
+    val passwordVisibility = remember { mutableStateOf(false) }
+
+    val customColor = colorResource(id = R.color.custom_blue)
+
+    Surface(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(28.dp),
+        color = Color.Transparent
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.Start // Align items to the start (left)
+        ) {
+            Text(
+                text = "Masukkan Email",
+                fontSize = 20.sp,
+                color = Color.Black,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(34.dp))
+            Text(
+                text = "Email",
+                fontSize = 16.sp,
+                color = Color.Black,
+                fontWeight = FontWeight.Normal,
+                textAlign = TextAlign.Start
+            )
+            Spacer(modifier = Modifier.height(3.dp))
+            OutlinedTextField(
+                value = emailState.value,
+                onValueChange = { newValue ->
+                    emailState.value = newValue
+                },
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    imeAction = ImeAction.Next
+                ),
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = customColor,
+                    unfocusedBorderColor = customColor,
+                    // Setting the label color to grey
+                    focusedLabelColor = Color.Gray,
+                    unfocusedLabelColor = Color.Gray
+                ),
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.Default.Edit,
+                        contentDescription = "Edit Icon",
+                        tint = customColor
+                    )
+                }
+            )
+            Spacer(modifier = Modifier.height(30.dp))
+            Text(
+                text = "Kata Sandi",
+                fontSize = 16.sp,
+                color = Color.Black,
+                fontWeight = FontWeight.Normal,
+                textAlign = TextAlign.Start
+            )
+            Spacer(modifier = Modifier.height(3.dp))
+            OutlinedTextField(
+                value = passwordState.value,
+                onValueChange = { newValue ->
+                    passwordState.value = newValue
+                },
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    imeAction = ImeAction.Done
+                ),
+                visualTransformation = if (passwordVisibility.value) VisualTransformation.None else PasswordVisualTransformation(),
+                colors = TextFieldDefaults.outlinedTextFieldColors(
+                    focusedBorderColor = customColor,
+                    unfocusedBorderColor = customColor,
+                    // Setting the label color to grey
+                    focusedLabelColor = Color.Gray,
+                    unfocusedLabelColor = Color.Gray
+                ),
+                trailingIcon = {
+                    val image = if (passwordVisibility.value)
+                        Icons.Default.Visibility
+                    else Icons.Default.VisibilityOff
+
+                    val description = if (passwordVisibility.value) "Hide password" else "Show password"
+
+                    IconButton(onClick = {
+                        passwordVisibility.value = !passwordVisibility.value
+                    }) {
+                        Icon(imageVector = image, contentDescription = description, tint = customColor)
+                    }
+                }
+            )
+            Spacer(modifier = Modifier.height(40.dp))
+            Button(
+                onClick = {  },
+                modifier = Modifier
+                    .width(135.dp)
+                    .height(40.dp)
+                    .align(Alignment.CenterHorizontally), // Center the button horizontally
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = customColor,
+                    contentColor = Color.Black
+                )
+            ) {
+                Text(
+                    text = "Berikutnya",
+                    fontSize = 16.sp,
+                    color = Color.Black
+                )
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+@Composable
+fun EmailScreenPreview() {
+    RangkulAppTheme {
+        EmailScreen(rememberNavController())
+    }
+}

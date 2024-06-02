@@ -32,7 +32,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
+import org.starlee.rangkulapp.navigation.Screen
 
 data class NavItem(
     @DrawableRes val icon: Int,
@@ -56,21 +59,23 @@ val list2 = listOf(
 
 @Preview
 @Composable
-fun Display1() {
+fun Display1(navController: NavHostController = rememberNavController()) {
     Column(
         modifier = Modifier
-            .fillMaxSize(), // Mengisi seluruh ukuran layar
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.weight(1f)) // Spacer untuk mengisi ruang kosong di atas
-        NavBar2(1, list2)
+        Spacer(modifier = Modifier.weight(1f))
+        NavBar2(1, list2, navController)
     }
 }
+
 
 @Composable
 fun NavBar2(
     defaultSelectedIndex: Int = 0,
-    list: List<NavItem>
+    list: List<NavItem>,
+    navController: NavHostController
 ) {
     val linearGradientBrush = Brush.horizontalGradient(
         colors = listOf(Color(0xFF87E1FF), Color(0xFF3F72AF))
@@ -100,6 +105,11 @@ fun NavBar2(
                         .weight(1f)
                         .clickable {
                             selectedIndex = index
+                            when (index) {
+                                0 -> navController.navigate(Screen.RangkulPeduli.route)
+                                1 -> navController.navigate(Screen.Donasi.route)
+                                2 -> navController.navigate(Screen.RangkulAsa.route)
+                            }
                         },
                     contentAlignment = Alignment.Center
                 ) {

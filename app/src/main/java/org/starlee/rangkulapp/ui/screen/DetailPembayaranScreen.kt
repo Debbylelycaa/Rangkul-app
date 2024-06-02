@@ -60,7 +60,7 @@ fun DetailPembayaranScreen(navController: NavHostController) {
             border = null
         ) {
             IconButton(
-                onClick = { },
+                onClick = {navController.popBackStack()  },
                 modifier = Modifier
                     .padding(start = 10.dp, end = 4.dp)
                     .size(28.dp) // Adjusted size for smaller button

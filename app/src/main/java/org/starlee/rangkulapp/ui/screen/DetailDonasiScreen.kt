@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -118,11 +120,29 @@ fun DetailDonasiScreen(navController: NavHostController) {
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Text(
-                            text = stringResource(R.string.jumlahdonasiterkirim),
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier.fillMaxWidth()
-                        )
+//                        Text(
+//                            text = stringResource(R.string.jumlahdonasiterkirim),
+//                            textAlign = TextAlign.Center,
+//                            modifier = Modifier.fillMaxWidth()
+//                        )
+                        Row {
+                            Text(
+                                text = stringResource(R.string.nominaltotal),
+                                textAlign = TextAlign.Start,
+                                fontSize = 10.sp,
+                                color = Color(0xFF427CBF),
+                                modifier = Modifier.weight(1f)
+                            )
+
+                            Text(
+                                text = stringResource(R.string.sisahari),
+                                textAlign = TextAlign.End,
+                                fontSize = 10.sp,
+                                color = Color(0xFF427CBF),
+                                modifier = Modifier.weight(1f)
+                            )
+                            Spacer(modifier = Modifier.width(18.dp))
+                        }
                     }
 
                     Button(
