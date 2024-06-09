@@ -35,7 +35,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
 import org.starlee.rangkulapp.navigation.Screen
-import org.starlee.rangkulapp.ui.screencomponent.Display1
 import org.starlee.rangkulapp.ui.screencomponent.SearchBar
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
@@ -79,7 +78,7 @@ fun RangkulPeduliScreen (navController: NavHostController){
                 RangkulPeduliCardContent(rememberNavController())
             }
         }
-        Display1()
+//        Display1()
     }
 }
 

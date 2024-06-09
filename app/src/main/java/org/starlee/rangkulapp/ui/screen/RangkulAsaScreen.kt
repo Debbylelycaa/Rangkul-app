@@ -35,7 +35,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
 import org.starlee.rangkulapp.navigation.Screen
-import org.starlee.rangkulapp.ui.screencomponent.Display1
 import org.starlee.rangkulapp.ui.screencomponent.DisplayTopNavBar2
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
@@ -152,7 +151,7 @@ fun RangkulAsaScreen (navController: NavHostController){
             )
         }
 
-        Display1()
+//        Display1()
     }
 }
 @Preview(showBackground = true)

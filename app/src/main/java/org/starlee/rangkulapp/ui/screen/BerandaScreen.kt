@@ -34,8 +34,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
-import org.starlee.rangkulapp.navigation.Screen
-import org.starlee.rangkulapp.ui.screencomponent.Display1
+import org.starlee.rangkulapp.navigation.BottomBarScreen
 import org.starlee.rangkulapp.ui.screencomponent.DisplaySlider
 import org.starlee.rangkulapp.ui.screencomponent.SearchBar
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
@@ -90,7 +89,7 @@ fun BerandaScreen(navController: NavHostController) {
                 PantiAsuhanCardContent(navController)
             }
         }
-        Display1()
+//        Display1()
     }
 }
 
@@ -126,7 +125,7 @@ fun PantiAsuhanCardContent(navController: NavHostController) {
                 Spacer(modifier = Modifier.weight(1f))
 
                 Button(
-                    onClick = { navController.navigate(Screen.DetailDonasi.route) },
+                    onClick = { navController.navigate(BottomBarScreen.DetailDonasi.route) },
                     colors = ButtonDefaults.buttonColors(Color.White),
                     modifier = Modifier.height(30.dp),
                     contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)

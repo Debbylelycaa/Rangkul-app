@@ -9,7 +9,6 @@ import org.starlee.rangkulapp.ui.screen.BerandaScreen
 import org.starlee.rangkulapp.ui.screen.DetailDonasiScreen
 import org.starlee.rangkulapp.ui.screen.DetailPembayaranScreen
 import org.starlee.rangkulapp.ui.screen.DetailRangkulPeduliScreen
-import org.starlee.rangkulapp.ui.screen.DonasiScreen
 import org.starlee.rangkulapp.ui.screen.EditProfilScreen
 import org.starlee.rangkulapp.ui.screen.EmailScreen
 import org.starlee.rangkulapp.ui.screen.ForgotPasswordScreen
@@ -24,65 +23,61 @@ import org.starlee.rangkulapp.ui.screen.TerimakasihScreen
 import org.starlee.rangkulapp.ui.screen.TransferScreen
 
 @Composable
-fun SetupNavGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = Screen.Home.route) {
-        composable(route = Screen.Home.route) {
+fun BottomNavGraph(navController: NavHostController) {
+    NavHost(navController = navController, startDestination = BottomBarScreen.Donasi.route) {
+        composable(route = BottomBarScreen.Donasi.route) {
             BerandaScreen(navController)
         }
-        composable(route = Screen.DetailPembayaran.route) {
-            DetailPembayaranScreen(navController)
-        }
-        composable(route = Screen.MulaiDonasi.route) {
-            MulaiDonasiScreen(navController)
-        }
-        composable(route = Screen.PembayaranBerhasil.route) {
-            PembayaranBerhasilScreen(navController)
-        }
-        composable(route = Screen.Terimakasih.route) {
-            TerimakasihScreen(navController)
-        }
-        composable(route = Screen.Transfer.route) {
-            TransferScreen(navController)
-        }
-        composable(route = Screen.InfoPenggalanganDana.route) {
-            InfoPenggalanganDanaScreen(navController)
-        }
-        composable(route = Screen.Donasi.route) {
-            DonasiScreen(navController)
-        }
-        composable(route = Screen.RangkulAsa.route) {
-            RangkulAsaScreen(navController)
-        }
-        composable(route = Screen.DetailDonasi.route) {
-            DetailDonasiScreen(navController)
-        }
-        composable(route = Screen.RangkulPeduli.route) {
+        composable(route = BottomBarScreen.RangkulPeduli.route) {
             RangkulPeduliScreen(navController)
         }
-        composable(route = Screen.RangkulAsa.route) {
-            RangkulAsaScreen(navController)
-        }
-        composable(route = Screen.DetailRangkulPeduli.route) {
-            DetailRangkulPeduliScreen(navController)
-        }
-        composable(route = Screen.Profil.route) {
+        composable(route = BottomBarScreen.Profil.route) {
             ProfilScreen(navController)
         }
-        composable(route = Screen.EditProfil.route) {
+        composable(route = BottomBarScreen.DetailPembayaran.route) {
+            DetailPembayaranScreen(navController)
+        }
+        composable(route = BottomBarScreen.MulaiDonasi.route) {
+            MulaiDonasiScreen(navController)
+        }
+        composable(route = BottomBarScreen.PembayaranBerhasil.route) {
+            PembayaranBerhasilScreen(navController)
+        }
+        composable(route = BottomBarScreen.Terimakasih.route) {
+            TerimakasihScreen(navController)
+        }
+        composable(route = BottomBarScreen.Transfer.route) {
+            TransferScreen(navController)
+        }
+        composable(route = BottomBarScreen.InfoPenggalanganDana.route) {
+            InfoPenggalanganDanaScreen(navController)
+        }
+        composable(route = BottomBarScreen.RangkulAsa.route) {
+            RangkulAsaScreen(navController)
+        }
+        composable(route = BottomBarScreen.DetailDonasi.route) {
+            DetailDonasiScreen(navController)
+        }
+        composable(route = BottomBarScreen.RangkulAsa.route) {
+            RangkulAsaScreen(navController)
+        }
+        composable(route = BottomBarScreen.DetailRangkulPeduli.route) {
+            DetailRangkulPeduliScreen(navController)
+        }
+        composable(route = BottomBarScreen.EditProfil.route) {
             EditProfilScreen(navController)
         }
-        composable(route = Screen.Email.route) {
+        composable(route = BottomBarScreen.Email.route) {
             EmailScreen(navController)
         }
-        composable(route = Screen.ForgotPassword.route) {
+        composable(route = BottomBarScreen.ForgotPassword.route) {
             ForgotPasswordScreen({})
         }
-        composable(route = Screen.GantiKataSandi.route) {
+        composable(route = BottomBarScreen.GantiKataSandi.route) {
             GantiKataSandiScreen(navController)
         }
         composable(route = Screen.About.route) {
             AboutScreen(navController)
         }
-
     }
 }

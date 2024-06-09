@@ -172,7 +172,7 @@ fun MulaiDonasiScreen(navController: NavHostController) {
             }
         }
     }
-    Display1()
+//    Display1()
 }
 
 

@@ -7,8 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.navigation.compose.rememberNavController
-import org.starlee.rangkulapp.navigation.SetupNavGraph
+import org.starlee.rangkulapp.ui.screen.MainScreen
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,8 +20,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val navController = rememberNavController()
-                    SetupNavGraph(navController = navController)
+//                    val navController = rememberNavController()
+//                    SetupNavGraph(navController = navController)
+//                    BottomNavGraph(navController = navController)
+                    MainScreen()
                 }
             }
         }

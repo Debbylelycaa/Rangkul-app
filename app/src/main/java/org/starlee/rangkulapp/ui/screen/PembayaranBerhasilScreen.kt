@@ -172,7 +172,7 @@ fun PembayaranBerhasilScreen(navController: NavHostController) {
                 }
             }
         }
-        Display1()
+//        Display1()
     }
 }
 

@@ -264,13 +264,13 @@ fun DonasiScreen (navController: NavHostController){
             )
         }
 
-        Display1()
+//        Display1()
     }
 }
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
 @Composable
-fun DonasiScreenScreenPreview(){
+fun DonasiScreenPreview(){
     RangkulAppTheme {
         DonasiScreen(rememberNavController())
     }
