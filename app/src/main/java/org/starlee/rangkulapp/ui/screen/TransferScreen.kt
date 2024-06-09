@@ -109,7 +109,9 @@ fun TransferScreen(navController: NavHostController) {
                     text = stringResource(R.string.pembayaran),
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.fillMaxWidth() // Text occupies full width
+                    color = Color.Black
+,
+                            modifier = Modifier.fillMaxWidth() // Text occupies full width
                 )
 
                 // Defined value and onValueChange for OutlinedTextField
@@ -134,14 +136,17 @@ fun TransferScreen(navController: NavHostController) {
                         text = stringResource(R.string.bri),
                         textAlign = TextAlign.Start,
                         fontSize = 11.sp,
-                        modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
+                        color = Color.Black
+,
+                                modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
                     )
                     Spacer(modifier = Modifier.width(8.dp)) // Spacer untuk memberikan jarak antara teks dan teks selanjutnya
                     Text(
                         text = stringResource(R.string.debby),
                         textAlign = TextAlign.End,
                         fontSize = 11.sp,
-                        modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
+                        color = Color.Black,
+                                modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
                     )
                 }
                 Divider(
@@ -152,7 +157,9 @@ fun TransferScreen(navController: NavHostController) {
                     Text(
                         text = stringResource(R.string.Mandiri),
                         textAlign = TextAlign.Start,
-                        fontSize = 11.sp,
+                        fontSize = 11.sp,                        color = Color.Black,
+
+
                         modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
                     )
                     Spacer(modifier = Modifier.width(8.dp)) // Spacer untuk memberikan jarak antara teks dan teks selanjutnya
@@ -160,6 +167,8 @@ fun TransferScreen(navController: NavHostController) {
                         text = stringResource(R.string.dianne),
                         textAlign = TextAlign.End,
                         fontSize = 11.sp,
+                        color = Color.Black,
+
                         modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
                     )
                 }
@@ -176,6 +185,8 @@ fun TransferScreen(navController: NavHostController) {
                             text = stringResource(R.string.opsianonim),
                             textAlign = TextAlign.Start,
                             fontSize = 11.sp,
+                            color = Color.Black,
+
                             modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
                         )
 
@@ -209,6 +220,8 @@ fun TransferScreen(navController: NavHostController) {
                             text = stringResource(R.string.asa),
                             textAlign = TextAlign.Start,
                             fontSize = 11.sp,
+                            color = Color.Black,
+
                             modifier = Modifier.weight(1f) // Memanfaatkan ruang sebanyak mungkin
                         )
                     }

@@ -108,7 +108,7 @@ fun NavBar2(
                             when (index) {
                                 0 -> navController.navigate(Screen.RangkulPeduli.route)
                                 1 -> navController.navigate(Screen.Donasi.route)
-                                2 -> navController.navigate(Screen.RangkulAsa.route)
+                                2 -> navController.navigate(Screen.Profil.route)
                             }
                         },
                     contentAlignment = Alignment.Center

@@ -112,6 +112,7 @@ fun PantiAsuhanCardContent(navController: NavHostController) {
                 textAlign = TextAlign.Center,
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Bold,
+                color = Color.Black
             )
             Spacer(modifier = Modifier.height(10.dp))
 
@@ -120,6 +121,7 @@ fun PantiAsuhanCardContent(navController: NavHostController) {
                     text = stringResource(R.string.alamat),
                     textAlign = TextAlign.Center,
                     fontSize = 11.sp,
+                    color = Color.Black
                 )
 
                 Spacer(modifier = Modifier.weight(1f))
@@ -137,6 +139,7 @@ fun PantiAsuhanCardContent(navController: NavHostController) {
                         textAlign = TextAlign.Center
                     )
                 }
+
 
                 Spacer(modifier = Modifier.weight(0.5f))
             }

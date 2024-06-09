@@ -101,6 +101,8 @@ fun RangkulPeduliCardContent(navController: NavHostController) {
                 textAlign = TextAlign.Center,
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Bold,
+                color = Color.Black
+
             )
             Spacer(modifier = Modifier.height(10.dp))
 
@@ -130,23 +132,26 @@ fun RangkulPeduliCardContent(navController: NavHostController) {
                     text = stringResource(R.string.alamat),
                     textAlign = TextAlign.Center,
                     fontSize = 11.sp,
+                    color = Color.Black
+
                 )
 
                 Spacer(modifier = Modifier.weight(1f))
 
                 Button(
-                    onClick = {navController.navigate(Screen.DetailRangkulPeduli.route) },
+                    onClick = { navController.navigate(Screen.DetailRangkulPeduli.route) },
                     colors = ButtonDefaults.buttonColors(Color.White),
                     modifier = Modifier.height(30.dp),
                     contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)
                 ) {
                     Text(
-                        text = stringResource(R.string.detail),
+                        text = stringResource(R.string.donasi),
                         fontSize = 10.sp,
                         color = Color.Black,
                         textAlign = TextAlign.Center
                     )
                 }
+
 
                 Spacer(modifier = Modifier.weight(0.5f))
             }

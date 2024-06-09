@@ -50,6 +50,7 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
+import org.starlee.rangkulapp.navigation.Screen
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -145,7 +146,7 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     HoverButton(
-                        onClick = { },
+                        onClick = { navController.navigate(Screen.EditProfil.route) },
                         modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp))
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -159,7 +160,8 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                     HoverButton(
-                        onClick = {  },
+
+                        onClick = { navController.navigate(Screen.Email.route) },
                         modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp))
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -173,7 +175,7 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                     HoverButton(
-                        onClick = { },
+                        onClick = { navController.navigate(Screen.About.route) },
                         modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp))
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {

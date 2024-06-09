@@ -111,7 +111,9 @@ fun MulaiDonasiScreen(navController: NavHostController) {
                     text = stringResource(R.string.pilih_nominal),
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier.fillMaxWidth() // Text occupies full width
+                    color = Color.Black
+,
+                            modifier = Modifier.fillMaxWidth() // Text occupies full width
                 )
 
                 // Defined value and onValueChange for OutlinedTextField
@@ -123,6 +125,7 @@ fun MulaiDonasiScreen(navController: NavHostController) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .border(border = BorderStroke(1.dp, blue)),
+
                 )
                 Column(
                     modifier = Modifier
