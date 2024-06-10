@@ -37,13 +37,26 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.navigation.BottomBarScreen
 import org.starlee.rangkulapp.navigation.BottomNavGraph
+import org.starlee.rangkulapp.navigation.Screen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
+
+    val showBottomBar = when (currentDestination?.route) {
+        Screen.Login.route, Screen.SignUp.route, Screen.ForgotPassword.route -> false
+        else -> true
+    }
+
     Scaffold(
-        bottomBar = { BottomBar(navController = navController) }
+        bottomBar = {
+            if (showBottomBar) {
+                BottomBar(navController = navController)
+            }
+        }
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
             BottomNavGraph(navController = navController)
@@ -54,8 +67,8 @@ fun MainScreen() {
 @Composable
 fun BottomBar(navController: NavController) {
     val screens = listOf(
-        BottomBarScreen.Donasi,
         BottomBarScreen.RangkulPeduli,
+        BottomBarScreen.Donasi,
         BottomBarScreen.Profil
     )
 

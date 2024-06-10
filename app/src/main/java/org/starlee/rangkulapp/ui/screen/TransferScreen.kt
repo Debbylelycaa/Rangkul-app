@@ -47,7 +47,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
-import org.starlee.rangkulapp.navigation.Screen
+import org.starlee.rangkulapp.navigation.BottomBarScreen
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @Composable
@@ -237,7 +237,7 @@ fun TransferScreen(navController: NavHostController) {
                     )
                 }
                 Button(
-                    onClick = { navController.navigate(Screen.PembayaranBerhasil.route) },
+                    onClick = { navController.navigate(BottomBarScreen.PembayaranBerhasil.route) },
                     modifier = Modifier
                         .padding(vertical = 8.dp)
                         .background(blue, RoundedCornerShape(10.dp)),

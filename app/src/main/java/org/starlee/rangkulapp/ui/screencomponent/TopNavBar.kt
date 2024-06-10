@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
-import org.starlee.rangkulapp.navigation.Screen
+import org.starlee.rangkulapp.navigation.BottomBarScreen
 
 val list1 = listOf(
     NavBarItem(
@@ -100,7 +100,7 @@ fun TopNavBar2(
             modifier = Modifier.fillMaxSize()
         ) {
             IconButton(
-                onClick = { navController.navigateUp() }, // Navigasi kembali
+                onClick = { navController.popBackStack()}, // Navigasi kembali
                 modifier = Modifier
                     .padding(start = 10.dp, end = 4.dp)
                     .size(28.dp)
@@ -127,9 +127,9 @@ fun TopNavBar2(
                             selectedIndex = index
                             // Navigasi ke rute yang sesuai
                             when (index) {
-                                0 -> navController.navigate(Screen.InfoPenggalanganDana.route)
-                                1 -> navController.navigate(Screen.Donasi.route)
-                                2 -> navController.navigate(Screen.RangkulAsa.route)
+                                0 -> navController.navigate(BottomBarScreen.InfoPenggalanganDana.route)
+                                1 -> navController.navigate(BottomBarScreen.Donasi.route)
+                                2 -> navController.navigate(BottomBarScreen.RangkulAsa.route)
                             }
                         },
                     contentAlignment = Center
@@ -187,9 +187,9 @@ fun TopNavBar2(
                                 selectedIndex = index
                                 // Navigasi ke rute yang sesuai
                                 when (index) {
-                                    0 -> navController.navigate(Screen.InfoPenggalanganDana.route)
-                                    1 -> navController.navigate(Screen.Donasi.route)
-                                    2 -> navController.navigate(Screen.RangkulAsa.route)
+                                    0 -> navController.navigate(BottomBarScreen.InfoPenggalanganDana.route)
+                                    1 -> navController.navigate(BottomBarScreen.Donasi.route)
+                                    2 -> navController.navigate(BottomBarScreen.RangkulAsa.route)
                                 }
                             },
                         contentAlignment = Center

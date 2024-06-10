@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RangkulApp</string>
+    <string name="app_name">Rangkul</string>
     <string name="tentang_aplikasi">Tentang Aplikasi</string>
     <string name="logoabout">Image %1$s</string>
     <string name="copyright">Rangkul merupakan platform crowdfunding yang menjadi jembatan bagi pengguna dalam berdonasi kepada anak-anak yatim di berbagai panti asuhan, sehingga anak-anak yatim bisa mendapatkan kesempatan yang sama dalam mengemban pendidikan, hubungan sosial, dan kehidupan yang layak.</string>
@@ -13,7 +13,7 @@
     <string name="minimal">minimal donasi Rp 10.000</string>
     <string name="lanjutpembayaran">Lanjutkan Pembayaran</string>
     <string name="pembayaran">Pembayaran</string>
-    <string name="nominalsepuluh">Rp 10.000</string>
+    <string name="nominalsepuluh">Nominal</string>
     <string name="bri">BRI 526901034421538</string>
     <string name="Mandiri">Mandiri 1310018055170</string>
     <string name="debby">" Debby Lelyca"</string>
@@ -23,7 +23,7 @@
     <string name="berhasil">Pembayaran Berhasil</string>
     <string name="pembayaranberhasilimg">pembayaran berhasil</string>
     <string name="detailPembayaran">Cek Detail Pembayaran</string>
-    <string name="jumlahdonasiterkirim">Donasimu sebesar Rp 10.000\ntelah terkirim</string>
+    <string name="jumlahdonasiterkirim">Donasimu telah terkirim</string>
     <string name="uploadbukti">Upload Bukti Pembayaran</string>
     <string name="unggahbuktidisini">Unggah bukti pembayaran anda di sini\ndan pembayaran anda akan segera dikonfirmasi</string>
     <string name="uploadbuktiimg">Upload bukti</string>
@@ -32,7 +32,7 @@
     <string name="donasiditerima">Donasimu telah kami terima dan akan kami salurkan</string>
     <string name="selesai">Selesai</string>
     <string name="tgl">Tanggal</string>
-    <string name="tgldonasi">08 Mar 2023 16:18</string>
+    <string name="tgldonasi">10 Juni 2024</string>
     <string name="mtd">Metode Pembayaran</string>
     <string name="pembayaranmethod">Transfer BRI</string>
     <string name="id">ID Donasi</string>
@@ -42,14 +42,14 @@
     <string name="ahmadyani">Yayasan Panti Asuhan Ahmad Yani</string>
     <string name="nominaltotal">Rp 3.200.000 \nTerkumpul</string>
     <string name="sisahari">203 \nHari lagi</string>
-    <string name="alamat">Bandung, Indonesia</string>
+    <string name="alamat1">Pontianak, Indonesia</string>
     <string name="donasi">Donasi</string>
     <string name="karyaanakperdamaian">Panti Asuhan Karya Anak Perdamaian</string>
     <string name="infopenggalangandana">Info Penggalangan Dana</string>
     <string name="infokaryaanakperdamaian">Bangunan yang dibangun dengan dinding berjenis kayu dan beratapkan seng ini memiliki konsep tata letak yang sederhana, namun tidak melepas keasriannya. Meski terlihat kuno dan tidak terlalu mewah, bangunan yang berdiri di kelilingi pepohonan hijau dan bernuansa desa ini penuh dengan cerita yang mungkin tidak semua orang mengetahuinya. Inilah Panti Asuhan Karya Anak Perdamaian berlokasi di Jalan Komba, Yobeh, Sentani, Jayapura, Papua. Panti asuhan yang bergerak di bidang sosial dan pendidikan ini telah berdiri sejak tahun 2013. Saat ini jumlah anak yang diasuh ada 52 anak (27 putra dan 25 putri). Usia anak-anak panti asuhan ini beragam dari balita umur 2 tahun hingga remaja 19 tahun. \n\nBangunan yang dibangun dengan dinding berjenis kayu dan beratapkan seng ini memiliki konsep tata letak yang sederhana, namun tidak melepas keasriannya. Meski terlihat kuno dan tidak terlalu mewah, bangunan yang berdiri di kelilingi pepohonan hijau dan bernuansa desa ini penuh dengan cerita yang mungkin tidak semua orang mengetahuinya. Inilah Panti Asuhan Karya Anak Perdamaian berlokasi di Jalan Komba, Yobeh, Sentani, Jayapura, Papua. Panti asuhan yang bergerak di bidang sosial dan pendidikan ini telah berdiri sejak tahun 2013. Saat ini jumlah anak yang diasuh ada 52 anak (27 putra dan 25 putri). Usia anak-anak panti asuhan ini beragam dari balita umur 2 tahun hingga remaja 19 tahun.</string>
     <string name="donasisekarang">Donasi Sekarang!</string>
     <string name="donatur">Donatur</string>
-    <string name="jlhdonatur"> 4 </string>
+    <string name="jlhdonatur"> 3 </string>
     <string name="shbtbaik">Sahabat Baik</string>
     <string name="donasisebesar">Donasi sebesar Rp 20.000</string>
     <string name="menit">7 menit</string>
@@ -58,4 +58,22 @@
     <string name="isiasa">Semoga bisa membantu panti dalam merawat para penghuni panti. Untuk orang-orang baik, tolong doakan semoga saya lulus Politeknik, Aamiinn...</string>
     <string name="detail">Detail</string>
     <string name="voluntrip">Voluntrip By Kitabisa</string>
+    <string name="hopewi">HOPE Worldwide Indonesia\n</string>
+    <string name="hopetgl">Senin, 23 Januari 2024 \n- Jumat, 23 Juli 2024</string>
+    <string name="alamat2">Jayapura, Indonesia</string>
+    <string name="kitabisajudul">Voluntrip By Kitabisa</string>
+    <string name="kitabisatgl">Selasa, 21 Februari 2024 \n- Kamis, 18 Agustus 2024</string>
+    <string name="ktbs">Hari : Selasa - Jumat\nTanggal : Selasa, 21 Februari 2024 - Kamis, 18 Agustus 2024\nLokasi : Jakarta Selatan\nKuota : 67\nVoluntrip by Kitabisa hadir sebagai wadah untuk kamu \nyang ingin mendapatkan pengalaman menjadi relawan \ndalam berbagai misi kebaikan. Wujudkan niat baikmu \ndengan ikut menjadi bagian dalam Voluntrip.</string>
+    <string name="daftarsekarang">Daftar Sekarang!</string>
+    <string name="hp">Hari : Senin - Jumat\nTanggal : Senin, 23 Januari 2024 - Jumat, 23 Juli 2024\nLokasi : Jakarta\nKuota : 100\nAgen hope adalah mereka yang membawa harapan dan perubahan hidup dengan sukarela tanpa paksaan – agen yang mempunyai visi dan misi untuk merubah dunia mulai dari diri mereka sendiri. Berbicaralah untuk mereka yang tidak dapat menyuarakan dirinya, belalah mereka yang miskin dan membutuhkan. Jadilah agen pengharapan dengan mendidik, memberikan kesehatan dan melayani mereka yang membutuhkan.</string>
+    <string name="RencanaPenggunaanDana">Rencana Penggunaan Dana</string>
+    <string name="sttsdana">Status dana terkumpul</string>
+    <string name="danaterkumpul">Dana terkumpul</string>
+    <string name="dana">Rp 3.200.00</string>
+    <string name="danaoperasional">Donasi opersaional Rangkul</string>
+    <string name="opr">Rp. 45000</string>
+    <string name="Danatersisa">Dana tersisa</string>
+    <string name="sisa">Rp.3.150.000\n</string>
+    <string name="admin">Biaya admin bank</string>
+    <string name="bank">Rp. 5.000</string>
 </resources>

@@ -43,8 +43,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
-import org.starlee.rangkulapp.navigation.Screen
-import org.starlee.rangkulapp.ui.screencomponent.Display1
+import org.starlee.rangkulapp.navigation.BottomBarScreen
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @Composable
@@ -162,7 +161,7 @@ fun MulaiDonasiScreen(navController: NavHostController) {
                 }
                 Spacer(modifier = Modifier.height(20.dp))
                 Button(
-                    onClick = {navController.navigate(Screen.Transfer.route)},
+                    onClick = {navController.navigate(BottomBarScreen.Transfer.route)},
                     modifier = Modifier
                         .padding(vertical = 8.dp)
                         .background(blue, RoundedCornerShape(10.dp)), // Set background color to blue with rounded corners

@@ -1,6 +1,7 @@
 package org.starlee.rangkulapp.ui.screen
 
 import android.content.res.Configuration
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -24,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -36,7 +38,6 @@ import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
 import org.starlee.rangkulapp.navigation.BottomBarScreen
 import org.starlee.rangkulapp.ui.screencomponent.DisplaySlider
-import org.starlee.rangkulapp.ui.screencomponent.SearchBar
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @Composable
@@ -51,7 +52,7 @@ fun BerandaScreen(navController: NavHostController) {
             .background(Color.White),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        SearchBar()
+        //SearchBar()
         DisplaySlider()
 
         Spacer(modifier = Modifier.height(30.dp))
@@ -86,7 +87,7 @@ fun BerandaScreen(navController: NavHostController) {
                 modifier = Modifier.background(gradientBrush),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                PantiAsuhanCardContent(navController)
+                PantiAsuhanCardContent2(navController)
             }
         }
 //        Display1()
@@ -109,7 +110,7 @@ fun PantiAsuhanCardContent(navController: NavHostController) {
             Spacer(modifier = Modifier.padding(5.dp))
             Text(
                 text = stringResource(R.string.ahmadyani),
-                textAlign = TextAlign.Center,
+                textAlign = TextAlign.Start,
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
@@ -118,7 +119,7 @@ fun PantiAsuhanCardContent(navController: NavHostController) {
 
             Row {
                 Text(
-                    text = stringResource(R.string.alamat),
+                    text = stringResource(R.string.alamat1),
                     textAlign = TextAlign.Center,
                     fontSize = 11.sp,
                     color = Color.Black
@@ -146,6 +147,65 @@ fun PantiAsuhanCardContent(navController: NavHostController) {
         }
     }
 }
+
+@Composable
+fun PantiAsuhanCardContent2(navController: NavHostController) {
+    val context = LocalContext.current // Ambil context dari LocalContext
+
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Image(
+            painter = painterResource(id = R.drawable.pakaryaanakperdamaian),
+            contentDescription = stringResource(R.string.karyaanakperdamaian),
+            alignment = Alignment.TopStart,
+            modifier = Modifier.size(137.dp)
+        )
+
+        Spacer(modifier = Modifier.width(8.dp))
+
+        Column {
+            Spacer(modifier = Modifier.padding(5.dp))
+            Text(
+                text = stringResource(R.string.karyaanakperdamaian),
+                textAlign = TextAlign.Start,
+                fontSize = 11.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Row {
+                Text(
+                    text = stringResource(R.string.alamat2),
+                    textAlign = TextAlign.Center,
+                    fontSize = 11.sp,
+                    color = Color.Black
+                )
+
+                Spacer(modifier = Modifier.weight(1f))
+
+                Button(
+                    onClick = {
+                        Toast.makeText(context, "Donasi ditutup", Toast.LENGTH_SHORT).show()
+                    },
+                    colors = ButtonDefaults.buttonColors(Color.White),
+                    modifier = Modifier.height(30.dp),
+                    contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp)
+                ) {
+                    Text(
+                        text = stringResource(R.string.donasi),
+                        fontSize = 10.sp,
+                        color = Color.Black,
+                        textAlign = TextAlign.Center
+                    )
+                }
+
+
+                Spacer(modifier = Modifier.weight(0.5f))
+            }
+        }
+    }
+}
+
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)

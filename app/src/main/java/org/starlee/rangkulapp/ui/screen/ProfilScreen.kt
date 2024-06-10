@@ -23,7 +23,6 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Key
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.PersonPin
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -50,7 +49,7 @@ import androidx.compose.ui.zIndex
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
-import org.starlee.rangkulapp.navigation.Screen
+import org.starlee.rangkulapp.navigation.BottomBarScreen
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -97,7 +96,7 @@ fun ProfilScreen(navController: NavHostController) {
                     .padding(7.dp) // Margin untuk lingkaran putih
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.profilpic),
+                    painter = painterResource(id = R.drawable.ic_profil_navbar),
                     contentDescription = "Profile Picture",
                     modifier = Modifier
                         .fillMaxSize()
@@ -129,7 +128,7 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
             verticalArrangement = Arrangement.Top
         ) {
             Text(
-                text = "Khalilah Atika Akmal",
+                text = "Khalilah",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 16.dp) // Added bottom padding
@@ -146,7 +145,7 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     HoverButton(
-                        onClick = { navController.navigate(Screen.EditProfil.route) },
+                        onClick = { navController.navigate(BottomBarScreen.EditProfil.route) },
                         modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp))
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -159,23 +158,23 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
                         }
                     }
                     Spacer(modifier = Modifier.height(8.dp))
-                    HoverButton(
-
-                        onClick = { navController.navigate(Screen.Email.route) },
-                        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp))
-                    ) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                imageVector = Icons.Default.Key,
-                                contentDescription = "Ganti Kata Sandi Icon",
-                                modifier = Modifier.padding(end = 8.dp) // Adjust the padding as needed
-                            )
-                            Text(text = "Ganti Kata Sandi", fontSize = 14.sp )
-                        }
-                    }
+//                    HoverButton(
+//
+//                        onClick = { navController.navigate(BottomBarScreen.Email.route) },
+//                        modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp))
+//                    ) {
+//                        Row(verticalAlignment = Alignment.CenterVertically) {
+//                            Icon(
+//                                imageVector = Icons.Default.Key,
+//                                contentDescription = "Ganti Kata Sandi Icon",
+//                                modifier = Modifier.padding(end = 8.dp) // Adjust the padding as needed
+//                            )
+//                            //Text(text = "Ganti Kata Sandi", fontSize = 14.sp )
+//                        }
+//                    }
                     Spacer(modifier = Modifier.height(8.dp))
                     HoverButton(
-                        onClick = { navController.navigate(Screen.About.route) },
+                        onClick = { navController.navigate(BottomBarScreen.About.route) },
                         modifier = Modifier.fillMaxWidth().clip(RoundedCornerShape(10.dp))
                     ) {
                         Row(verticalAlignment = Alignment.CenterVertically) {

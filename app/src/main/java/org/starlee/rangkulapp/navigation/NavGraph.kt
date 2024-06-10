@@ -9,6 +9,7 @@ import org.starlee.rangkulapp.ui.screen.BerandaScreen
 import org.starlee.rangkulapp.ui.screen.DetailDonasiScreen
 import org.starlee.rangkulapp.ui.screen.DetailPembayaranScreen
 import org.starlee.rangkulapp.ui.screen.DetailRangkulPeduliScreen
+import org.starlee.rangkulapp.ui.screen.DetailRangkulPeduliScreen1
 import org.starlee.rangkulapp.ui.screen.DonasiScreen
 import org.starlee.rangkulapp.ui.screen.EditProfilScreen
 import org.starlee.rangkulapp.ui.screen.EmailScreen
@@ -65,6 +66,9 @@ fun SetupNavGraph(navController: NavHostController) {
         composable(route = Screen.DetailRangkulPeduli.route) {
             DetailRangkulPeduliScreen(navController)
         }
+        composable(route = Screen.DetailRangkulPeduli1.route) {
+            DetailRangkulPeduliScreen1(navController)
+        }
         composable(route = Screen.Profil.route) {
             ProfilScreen(navController)
         }
@@ -75,7 +79,7 @@ fun SetupNavGraph(navController: NavHostController) {
             EmailScreen(navController)
         }
         composable(route = Screen.ForgotPassword.route) {
-            ForgotPasswordScreen({})
+            ForgotPasswordScreen(navController)
         }
         composable(route = Screen.GantiKataSandi.route) {
             GantiKataSandiScreen(navController)

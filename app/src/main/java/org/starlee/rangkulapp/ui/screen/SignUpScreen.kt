@@ -35,11 +35,14 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
+import org.starlee.rangkulapp.navigation.BottomBarScreen
 
 
 @Composable
-fun SignupScreen(navigateToLogin: () -> Unit) {
+fun SignupScreen(navController: NavHostController ) {
     val backgroundImage = painterResource(id = R.drawable.background_image)
 
     val customColor = colorResource(id = R.color.ocean)
@@ -48,6 +51,7 @@ fun SignupScreen(navigateToLogin: () -> Unit) {
     val usernameState = remember { mutableStateOf("") }
     val passwordState = remember { mutableStateOf("") }
     val confirmPasswordState = remember { mutableStateOf("") }
+
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -79,23 +83,10 @@ fun SignupScreen(navigateToLogin: () -> Unit) {
                     contentScale = ContentScale.Fit
                 )
                 Text(
-                    text = "Sign Up",
+                    text = "Daftar",
                     fontSize = 28.sp,
                     color = Color.Black,
                     fontWeight = FontWeight.Bold
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-
-                OutlinedTextField(
-                    value = emailState.value,
-                    onValueChange = { newValue ->
-                        emailState.value = newValue
-                    },
-                    label = { Text("Email", color = Color.Black) },
-                    modifier = Modifier.fillMaxWidth(),
-                    keyboardOptions = KeyboardOptions.Default.copy(
-                        imeAction = ImeAction.Next // Mengubah imeAction menjadi Next
-                    )
                 )
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -108,6 +99,19 @@ fun SignupScreen(navigateToLogin: () -> Unit) {
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions.Default.copy(
                         imeAction = ImeAction.Next
+                    )
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+
+                OutlinedTextField(
+                    value = emailState.value,
+                    onValueChange = { newValue ->
+                        emailState.value = newValue
+                    },
+                    label = { Text("Email", color = Color.Black) },
+                    modifier = Modifier.fillMaxWidth(),
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        imeAction = ImeAction.Next // Mengubah imeAction menjadi Next
                     )
                 )
                 Spacer(modifier = Modifier.height(16.dp))
@@ -142,14 +146,14 @@ fun SignupScreen(navigateToLogin: () -> Unit) {
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
-                    onClick = { /* Handle sign up */ },
+                    onClick = { navController.navigate(BottomBarScreen.Login.route) },
                     modifier = Modifier.wrapContentWidth(), // Menggunakan wrapContentWidth() untuk menyesuaikan lebar tombol dengan teks di dalamnya
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.White,
                         contentColor = Color.Black
                     )
                 ) {
-                    Text("Sign Up")
+                    Text("Daftar")
                 }
                 Spacer(modifier = Modifier.height(8.dp))
                 ClickableText(
@@ -167,7 +171,7 @@ fun SignupScreen(navigateToLogin: () -> Unit) {
                         )
                     },
                     onClick = {
-                        navigateToLogin()
+                        navController.navigate(BottomBarScreen.Login.route)
                     }
                 )
             }
@@ -177,6 +181,6 @@ fun SignupScreen(navigateToLogin: () -> Unit) {
 
 @Preview
 @Composable
-fun SignupScreenPreview() {
-    SignupScreen({})
+private fun SignupScreenPreview() {
+    SignupScreen(rememberNavController())
 }

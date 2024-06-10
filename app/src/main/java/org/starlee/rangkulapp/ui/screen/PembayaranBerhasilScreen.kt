@@ -42,8 +42,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
-import org.starlee.rangkulapp.navigation.Screen
-import org.starlee.rangkulapp.ui.screencomponent.Display1
+import org.starlee.rangkulapp.navigation.BottomBarScreen
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @Composable
@@ -163,7 +162,7 @@ fun PembayaranBerhasilScreen(navController: NavHostController) {
 
                 // Menyisipkan gambar di sini
                 Button(
-                    onClick = { navController.navigate(Screen.Terimakasih.route) },
+                    onClick = { navController.navigate(BottomBarScreen.Terimakasih.route) },
                     modifier = Modifier
                         .padding(vertical = 8.dp)
                         .background(

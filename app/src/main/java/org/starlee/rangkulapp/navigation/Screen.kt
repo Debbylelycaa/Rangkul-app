@@ -1,6 +1,9 @@
 package org.starlee.rangkulapp.navigation
 
 sealed class Screen (val route: String){
+    data object Login: Screen("LoginScreen")
+    data object SignUp: Screen("SignUpScreen")
+
     data object Home: Screen("BerandaScreen")
     data object DetailPembayaran: Screen("DetailPembayaranScreen")
     data object MulaiDonasi: Screen("MulaiDonasiScreen")
@@ -13,6 +16,8 @@ sealed class Screen (val route: String){
     data object DetailDonasi: Screen("DetailDonasiScreen") // Perbaikan disini
     data object RangkulPeduli: Screen("RangkulPeduliScreen")
     data object DetailRangkulPeduli: Screen("DetailRangkulPeduliScreen")
+    data object DetailRangkulPeduli1: Screen("DetailRangkulPeduliScreen1")
+
     data object EditProfil: Screen("EditProfilScreen")
     data object Profil: Screen("ProfilScreen")
     data object Email: Screen("EmailScreen")
@@ -20,6 +25,7 @@ sealed class Screen (val route: String){
     data object GantiKataSandi: Screen("GantiKataSandiScreen")
 
     data object About: Screen("AboutScreen")
+    data object RencanaPenggunaanDana: Screen("RencanaPenggunaanDana")
 
 
 

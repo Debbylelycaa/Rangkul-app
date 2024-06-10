@@ -1,11 +1,11 @@
 package org.starlee.rangkulapp.ui.screen
 
+import EditProfilViewModel
 import android.app.DatePickerDialog
 import android.content.res.Configuration
 import android.widget.DatePicker
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,17 +17,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.CalendarToday
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -58,9 +55,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
+import org.starlee.rangkulapp.navigation.BottomBarScreen
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 import java.util.Calendar
 
@@ -68,6 +67,7 @@ import java.util.Calendar
 @Composable
 fun EditProfilScreen(navController: NavHostController) {
     val customColor = colorResource(id = R.color.custom_blue)
+    val editProfilViewModel: EditProfilViewModel = viewModel()
 
     Scaffold(
         topBar = {
@@ -106,13 +106,13 @@ fun EditProfilScreen(navController: NavHostController) {
             )
         }
     ) { padding ->
-        EditProfilContent(Modifier.padding(padding))
+        EditProfilContent(navController, editProfilViewModel, Modifier.padding(padding))
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EditProfilContent(modifier: Modifier) {
+fun EditProfilContent(navController: NavHostController, editProfilViewModel: EditProfilViewModel, modifier: Modifier) {
     val namalengkapState = remember { mutableStateOf("") }
     val noteleponState = remember { mutableStateOf("") }
     val alamatState = remember { mutableStateOf("") }
@@ -177,30 +177,11 @@ fun EditProfilContent(modifier: Modifier) {
                         contentAlignment = Alignment.Center
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.profilpic),
+                            painter = painterResource(id = R.drawable.ic_profil_navbar),
                             contentDescription = "Foto Profil",
                             modifier = Modifier.size(106.dp),
                             contentScale = ContentScale.Crop
                         )
-                        Box(
-                            modifier = Modifier
-                                .size(40.dp)
-                                .background(Color.White, CircleShape)
-                                .border(1.dp, customColor, CircleShape)
-                                .align(Alignment.BottomEnd)
-                                .padding(4.dp)
-                        ) {
-                            IconButton(
-                                onClick = { /* on click action */ },
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Edit,
-                                    contentDescription = "Edit Icon",
-                                    tint = customColor,
-                                    modifier = Modifier.size(28.dp)
-                                )
-                            }
-                        }
                     }
                 }
                 Spacer(modifier = Modifier.height(16.dp))
@@ -209,7 +190,7 @@ fun EditProfilContent(modifier: Modifier) {
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = "Khalilah Atika Akmal",
+                        text = "Khalilah ",
                         fontSize = 16.sp,
                         color = Color.Black,
                         fontWeight = FontWeight.Bold,
@@ -217,7 +198,7 @@ fun EditProfilContent(modifier: Modifier) {
                         modifier = Modifier.padding(bottom = 4.dp)
                     )
                     Text(
-                        text = emailState.value,
+                        text = "khalilah@gmail.com",
                         fontSize = 14.sp,
                         color = Color.Gray,
                         textAlign = TextAlign.Center,
@@ -385,16 +366,17 @@ fun EditProfilContent(modifier: Modifier) {
                 Spacer(modifier = Modifier.height(40.dp))
                 Box(modifier = Modifier.fillMaxWidth()) {
                     Button(
-                        onClick = { /* on click action */ },
+                        onClick = {
+                            editProfilViewModel.simpanData(
+                                namalengkapState.value,
+                                noteleponState.value,
+                                alamatState.value
+                            )
+                            navController.navigate(BottomBarScreen.Profil.route)
+                        },
                         modifier = Modifier
-                            .width(130.dp)
-                            .height(38.dp)
-                            .align(Alignment.Center),
-                        shape = RoundedCornerShape(10.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = customColor,
-                            contentColor = Color.Black
-                        )
+                            .fillMaxWidth()
+                            .height(56.dp)
                     ) {
                         Text(
                             text = "Simpan",
