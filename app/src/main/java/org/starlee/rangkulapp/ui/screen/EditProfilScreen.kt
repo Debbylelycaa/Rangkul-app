@@ -24,7 +24,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.CalendarToday
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -59,7 +58,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
-import org.starlee.rangkulapp.navigation.BottomBarScreen
 import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 import java.util.Calendar
 
@@ -365,25 +363,25 @@ fun EditProfilContent(navController: NavHostController, editProfilViewModel: Edi
                 )
                 Spacer(modifier = Modifier.height(40.dp))
                 Box(modifier = Modifier.fillMaxWidth()) {
-                    Button(
-                        onClick = {
-                            editProfilViewModel.simpanData(
-                                namalengkapState.value,
-                                noteleponState.value,
-                                alamatState.value
-                            )
-                            navController.navigate(BottomBarScreen.Profil.route)
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(56.dp)
-                    ) {
-                        Text(
-                            text = "Simpan",
-                            fontSize = 16.sp,
-                            color = Color.Black
-                        )
-                    }
+                    // Button(
+                       // onClick = {
+//                            editProfilViewModel.simpanData(
+//                                namalengkapState.value,
+//                                noteleponState.value,
+//                                alamatState.value
+//                            )
+                        //    navController.navigate(BottomBarScreen.Profil.route)
+                     //   },
+//                        modifier = Modifier
+//                            .fillMaxWidth()
+//                            .height(56.dp)
+//                    ) {
+//                        Text(
+//                            text = "Simpan",
+//                            fontSize = 16.sp,
+//                            color = Color.Black
+//                        )
+                //    }
                 }
             }
         }
