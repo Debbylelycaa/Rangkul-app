@@ -1,5 +1,6 @@
 package org.starlee.rangkulapp.ui.screen
 
+import LoginViewModel
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
@@ -41,7 +42,7 @@ import org.starlee.rangkulapp.navigation.Screen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MainScreen() {
+fun MainScreen(loginViewModel: LoginViewModel) {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
@@ -59,7 +60,7 @@ fun MainScreen() {
         }
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
-            BottomNavGraph(navController = navController)
+            BottomNavGraph(navController = navController, loginViewModel)
         }
     }
 }

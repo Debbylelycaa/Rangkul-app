@@ -1,9 +1,7 @@
 package org.starlee.rangkulapp.ui.screen
 
 import android.content.res.Configuration
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -16,7 +14,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
@@ -25,7 +22,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -35,7 +31,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -53,7 +48,7 @@ fun MulaiDonasiScreen(navController: NavHostController) {
     val darkenblue = Color(0xFF427CBF)
 
     // List of nominal options
-    val nominalOptions = listOf("10k", "15k", "25k", "50k", "100k")
+    val nominalOptions = listOf("10000", "15000", "25000", "50000", "100000")
     // State to keep track of selected nominal
     val selectedNominal = remember { mutableStateOf("") }
 
@@ -110,32 +105,30 @@ fun MulaiDonasiScreen(navController: NavHostController) {
                     text = stringResource(R.string.pilih_nominal),
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Bold,
-                    color = Color.Black
-,
-                            modifier = Modifier.fillMaxWidth() // Text occupies full width
+                    color = Color.Black,
+                    modifier = Modifier.fillMaxWidth() // Text occupies full width
                 )
 
-                // Defined value and onValueChange for OutlinedTextField
-                OutlinedTextField(
-                    value = selectedNominal.value,
-                    onValueChange = { selectedNominal.value = it },
-                    label = { Text(text = stringResource(R.string.minimal_donasi)) },
-                    keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .border(border = BorderStroke(1.dp, blue)),
-
-                )
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 8.dp)
-                ) {
+                // Display selected nominal or prompt to select one
+                if (selectedNominal.value.isNotEmpty()) {
                     Text(
-                        text = stringResource(R.string.minimal),
-                        color = blue,
-                        textAlign = TextAlign.Start,
-                        fontSize = 11.sp
+                        text = selectedNominal.value,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = darkenblue,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp)
+                    )
+                } else {
+                    Text(
+                        text = stringResource(R.string.minimal_donasi),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        color = Color.Gray,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp)
                     )
                 }
 
@@ -161,11 +154,11 @@ fun MulaiDonasiScreen(navController: NavHostController) {
                 }
                 Spacer(modifier = Modifier.height(20.dp))
                 Button(
-                    onClick = {navController.navigate(BottomBarScreen.Transfer.route)},
+                    onClick = { navController.navigate(BottomBarScreen.PembayaranBerhasil.route) },
                     modifier = Modifier
                         .padding(vertical = 8.dp)
-                        .background(blue, RoundedCornerShape(10.dp)), // Set background color to blue with rounded corners
-                    colors = ButtonDefaults.buttonColors(contentColor = Color.Black), // Set text color to white
+                        .background(blue, RoundedCornerShape(10.dp)),
+                    colors = ButtonDefaults.buttonColors(contentColor = Color.Black),
                 ) {
                     Text(
                         text = stringResource(R.string.lanjutpembayaran),
@@ -174,9 +167,7 @@ fun MulaiDonasiScreen(navController: NavHostController) {
             }
         }
     }
-//    Display1()
 }
-
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)

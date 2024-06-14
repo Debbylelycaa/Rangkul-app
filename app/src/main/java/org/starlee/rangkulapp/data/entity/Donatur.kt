@@ -4,9 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
-data class donatur (
-    @PrimaryKey(autoGenerate = true) var idDonatur: Int? = null,
+@Entity(tableName = "donatur_table")
+data class Donatur (
+    @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "id") var id: Int? = null,
     @ColumnInfo(name = "namapengguna") var namaPengguna: String?,
     @ColumnInfo(name = "password") var password: String?,
     @ColumnInfo(name = "jeniskelamin") var jenisKelamin: String?,
@@ -14,4 +14,6 @@ data class donatur (
     @ColumnInfo(name = "namalengkap") var namaLengkap: String?,
     @ColumnInfo(name = "alamat") var alamat: String?,
     @ColumnInfo(name = "emaildonatur") var emailDonatur: String?,
-    )
+    @ColumnInfo(name = "noTelepon") var noTelepon: String?,
+    @ColumnInfo(name = "tanggalLahir") var tanggalLahir: String?
+)

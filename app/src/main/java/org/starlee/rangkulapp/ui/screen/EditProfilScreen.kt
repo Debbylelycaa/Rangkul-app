@@ -1,6 +1,7 @@
 package org.starlee.rangkulapp.ui.screen
 
 import EditProfilViewModel
+import LoginViewModel
 import android.app.DatePickerDialog
 import android.content.res.Configuration
 import android.widget.DatePicker
@@ -22,7 +23,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.CalendarToday
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -66,6 +66,9 @@ import java.util.Calendar
 fun EditProfilScreen(navController: NavHostController) {
     val customColor = colorResource(id = R.color.custom_blue)
     val editProfilViewModel: EditProfilViewModel = viewModel()
+    editProfilViewModel.initDataFromDatabase()
+    val loginViewModel: LoginViewModel = viewModel()
+
 
     Scaffold(
         topBar = {
@@ -104,21 +107,25 @@ fun EditProfilScreen(navController: NavHostController) {
             )
         }
     ) { padding ->
-        EditProfilContent(navController, editProfilViewModel, Modifier.padding(padding))
+        EditProfilContent(
+            navController,
+            editProfilViewModel,
+            loginViewModel,
+            Modifier.padding(padding)
+        )
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EditProfilContent(navController: NavHostController, editProfilViewModel: EditProfilViewModel, modifier: Modifier) {
-    val namalengkapState = remember { mutableStateOf("") }
-    val noteleponState = remember { mutableStateOf("") }
-    val alamatState = remember { mutableStateOf("") }
+fun EditProfilContent(navController: NavHostController, editProfilViewModel: EditProfilViewModel, loginViewModel: LoginViewModel, modifier: Modifier) {
+    val loginViewModel: LoginViewModel = viewModel()
+    val namalengkapState = remember { mutableStateOf(editProfilViewModel.namaLengkap.value ?: "") }
+    val noteleponState = remember { mutableStateOf(editProfilViewModel.noTelepon.value ?: "") }
+    val alamatState = remember { mutableStateOf(editProfilViewModel.alamat.value ?: "") }
     val genderOptions = listOf("Perempuan", "Laki-laki")
-    val selectedGenderState = remember { mutableStateOf<String?>(null) }
-    val dateState = remember { mutableStateOf("") }
-
-    val emailState = remember { mutableStateOf("example@example.com") }
+    val selectedGenderState = remember { mutableStateOf(editProfilViewModel.jenisKelamin.value ?: "") }
+    val dateState = remember { mutableStateOf(editProfilViewModel.tanggalLahir.value ?: "") }
 
     val customColor = colorResource(id = R.color.custom_blue)
 
@@ -188,7 +195,7 @@ fun EditProfilContent(navController: NavHostController, editProfilViewModel: Edi
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = "Khalilah ",
+                        text = loginViewModel.username.value ?: "",
                         fontSize = 16.sp,
                         color = Color.Black,
                         fontWeight = FontWeight.Bold,
@@ -196,7 +203,7 @@ fun EditProfilContent(navController: NavHostController, editProfilViewModel: Edi
                         modifier = Modifier.padding(bottom = 4.dp)
                     )
                     Text(
-                        text = "khalilah@gmail.com",
+                        text = loginViewModel.email.value ?: "",
                         fontSize = 14.sp,
                         color = Color.Gray,
                         textAlign = TextAlign.Center,
@@ -216,6 +223,7 @@ fun EditProfilContent(navController: NavHostController, editProfilViewModel: Edi
                     value = namalengkapState.value,
                     onValueChange = { newValue ->
                         namalengkapState.value = newValue
+                        editProfilViewModel.updateNamaLengkap(newValue)
                     },
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions.Default.copy(
@@ -290,7 +298,7 @@ fun EditProfilContent(navController: NavHostController, editProfilViewModel: Edi
                     trailingIcon = {
                         IconButton(onClick = { datePickerDialog.show() }) {
                             Icon(
-                                imageVector = Icons.Default.CalendarToday,
+                                painter = painterResource(id = R.drawable.ic_calendar),
                                 contentDescription = "Calendar Icon",
                                 tint = customColor
                             )
@@ -363,25 +371,26 @@ fun EditProfilContent(navController: NavHostController, editProfilViewModel: Edi
                 )
                 Spacer(modifier = Modifier.height(40.dp))
                 Box(modifier = Modifier.fillMaxWidth()) {
-                    // Button(
-                       // onClick = {
-//                            editProfilViewModel.simpanData(
-//                                namalengkapState.value,
-//                                noteleponState.value,
-//                                alamatState.value
-//                            )
-                        //    navController.navigate(BottomBarScreen.Profil.route)
-                     //   },
-//                        modifier = Modifier
-//                            .fillMaxWidth()
-//                            .height(56.dp)
-//                    ) {
-//                        Text(
-//                            text = "Simpan",
-//                            fontSize = 16.sp,
-//                            color = Color.Black
-//                        )
-                //    }
+                    Box(modifier = Modifier.fillMaxWidth()) {
+                        IconButton(
+                            onClick = {
+                                editProfilViewModel.simpanData(
+                                    namalengkapState.value,
+                                    noteleponState.value,
+                                    alamatState.value
+                                )
+                                navController.popBackStack()
+                            },
+                            modifier = Modifier.align(Alignment.CenterEnd)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Edit,
+                                contentDescription = "Simpan Icon",
+                                tint = customColor
+                            )
+                        }
+                    }
+
                 }
             }
         }

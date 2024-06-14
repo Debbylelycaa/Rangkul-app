@@ -191,7 +191,7 @@ fun DetailDonasiScreen(navController: NavHostController) {
             Spacer(modifier = Modifier.height(30.dp))
 
             Button(
-                onClick = { navController.navigate(BottomBarScreen.Transfer.route) },
+                onClick = { navController.navigate(BottomBarScreen.MulaiDonasi.route) },
                 modifier = Modifier
                     .padding(vertical = 8.dp)
                     .background(

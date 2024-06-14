@@ -1,6 +1,6 @@
 package org.starlee.rangkulapp.ui.screen
 
-import android.content.res.Configuration
+import LoginViewModel
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -31,6 +31,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -42,19 +43,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
 import org.starlee.rangkulapp.navigation.BottomBarScreen
-import org.starlee.rangkulapp.ui.theme.RangkulAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ProfilScreen(navController: NavHostController) {
+fun ProfilScreen(navController: NavHostController, loginViewModel: LoginViewModel) {
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -77,7 +76,7 @@ fun ProfilScreen(navController: NavHostController) {
                 }
             }
         ) { padding ->
-            ScreenContent(Modifier.padding(padding), navController)
+            ScreenContent(Modifier.padding(padding), navController, loginViewModel)
         }
 
         // Profile Picture with white circle background
@@ -108,7 +107,8 @@ fun ProfilScreen(navController: NavHostController) {
 }
 
 @Composable
-fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostController) {
+fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostController, loginViewModel: LoginViewModel) {
+    val namaPengguna by loginViewModel.username.observeAsState("Pengguna")
     Box(
         modifier = modifier.fillMaxSize()
     ) {
@@ -128,7 +128,7 @@ fun ScreenContent(modifier: Modifier = Modifier, navController: NavHostControlle
             verticalArrangement = Arrangement.Top
         ) {
             Text(
-                text = "Khalilah",
+                text = namaPengguna,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 16.dp) // Added bottom padding
@@ -223,11 +223,11 @@ fun HoverButton(
     }
 }
 
-@Preview(showBackground = true)
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
-@Composable
-fun ProfilScreenPreview() {
-    RangkulAppTheme {
-        ProfilScreen(rememberNavController())
-    }
-}
+//@Preview(showBackground = true)
+//@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+//@Composable
+//fun ProfilScreenPreview() {
+//    RangkulAppTheme {
+//        ProfilScreen(rememberNavController())
+//    }
+//}

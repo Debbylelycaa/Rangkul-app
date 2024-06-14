@@ -16,11 +16,14 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -35,14 +38,23 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import kotlinx.coroutines.launch
 import org.starlee.rangkulapp.R
+import org.starlee.rangkulapp.data.entity.Donatur
 import org.starlee.rangkulapp.navigation.BottomBarScreen
-
+import org.starlee.rangkulapp.util.viewmodel.DonaturViewModel
 
 @Composable
-fun SignupScreen(navController: NavHostController ) {
+fun SignupScreen(navController: NavHostController) {
+    val donaturViewModel: DonaturViewModel = viewModel()
+    SignupScreen(navController, donaturViewModel)
+}
+
+@Composable
+fun SignupScreen(navController: NavHostController, donaturViewModel: DonaturViewModel) {
     val backgroundImage = painterResource(id = R.drawable.background_image)
 
     val customColor = colorResource(id = R.color.ocean)
@@ -51,7 +63,8 @@ fun SignupScreen(navController: NavHostController ) {
     val usernameState = remember { mutableStateOf("") }
     val passwordState = remember { mutableStateOf("") }
     val confirmPasswordState = remember { mutableStateOf("") }
-
+    val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -111,34 +124,30 @@ fun SignupScreen(navController: NavHostController ) {
                     label = { Text("Email", color = Color.Black) },
                     modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions.Default.copy(
-                        imeAction = ImeAction.Next // Mengubah imeAction menjadi Next
+                        imeAction = ImeAction.Next
                     )
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                // TextField untuk kata sandi
                 OutlinedTextField(
                     value = passwordState.value,
                     onValueChange = { newValue ->
                         passwordState.value = newValue
                     },
                     label = { Text("Kata Sandi", color = Color.Black) },
-                    modifier = Modifier
-                        .fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions.Default.copy(
                         imeAction = ImeAction.Next
                     ),
                     visualTransformation = PasswordVisualTransformation()
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                // TextField untuk konfirmasi kata sandi
                 OutlinedTextField(
                     value = confirmPasswordState.value,
                     onValueChange = { newValue ->
                         confirmPasswordState.value = newValue
                     },
                     label = { Text("Konfirmasi Kata Sandi", color = Color.Black) },
-                    modifier = Modifier
-                        .fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth(),
                     keyboardOptions = KeyboardOptions.Default.copy(
                         imeAction = ImeAction.Done
                     ),
@@ -146,8 +155,28 @@ fun SignupScreen(navController: NavHostController ) {
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
-                    onClick = { navController.navigate(BottomBarScreen.Login.route) },
-                    modifier = Modifier.wrapContentWidth(), // Menggunakan wrapContentWidth() untuk menyesuaikan lebar tombol dengan teks di dalamnya
+                    onClick = {
+                        if (passwordState.value == confirmPasswordState.value) {
+                            val donatur = Donatur(
+                                namaPengguna = usernameState.value,
+                                password = passwordState.value,
+                                emailDonatur = emailState.value,
+                                jenisKelamin = null,
+                                teleponDonatur = null,
+                                namaLengkap = null,
+                                alamat = null,
+                                noTelepon = "", // Pass an empty string or a default value
+                                tanggalLahir = "" //
+                            )
+                            donaturViewModel.insert(donatur)
+                            navController.navigate(BottomBarScreen.Login.route)
+                        } else {
+                            scope.launch {
+                                snackbarHostState.showSnackbar("Kata sandi tidak cocok")
+                            }
+                        }
+                    },
+                    modifier = Modifier.wrapContentWidth(),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.White,
                         contentColor = Color.Black
@@ -159,7 +188,6 @@ fun SignupScreen(navController: NavHostController ) {
                 ClickableText(
                     text = buildAnnotatedString {
                         append("Sudah punya akun? Masuk")
-
                         addStyle(
                             style = SpanStyle(
                                 color = customColor,
@@ -176,6 +204,11 @@ fun SignupScreen(navController: NavHostController ) {
                 )
             }
         }
+
+        SnackbarHost(
+            hostState = snackbarHostState,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
     }
 }
 

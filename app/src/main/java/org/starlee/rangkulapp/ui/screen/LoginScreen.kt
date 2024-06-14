@@ -1,6 +1,7 @@
 package org.starlee.rangkulapp.ui.screen
 
 
+import LoginViewModel
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -27,7 +28,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -35,23 +35,20 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import org.starlee.rangkulapp.R
-import org.starlee.rangkulapp.navigation.BottomBarScreen
+import org.starlee.rangkulapp.navigation.Screen
 
 @Composable
-fun LoginScreen(navController: NavHostController) {
+fun LoginScreen(navController: NavHostController, loginViewModel: LoginViewModel) {
     val backgroundImage = painterResource(id = R.drawable.background_image)
     val ocean = colorResource(id = R.color.ocean)
 
-
     val usernameState = remember { mutableStateOf("") }
     val passwordState = remember { mutableStateOf("") }
-    val context = LocalContext.current
+    val errorMessage = remember { mutableStateOf("") }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -90,6 +87,17 @@ fun LoginScreen(navController: NavHostController) {
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(16.dp))
+
+                // Tampilkan pesan kesalahan jika ada
+                if (errorMessage.value.isNotEmpty()) {
+                    Text(
+                        text = errorMessage.value,
+                        color = Color.Red,
+                        fontSize = 14.sp,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                }
+
                 // TextField untuk nama pengguna
                 OutlinedTextField(
                     value = usernameState.value,
@@ -130,22 +138,40 @@ fun LoginScreen(navController: NavHostController) {
                             addStyle(
                                 style = SpanStyle(
                                     color = ocean,
-                                    fontSize = 14.sp,
-
-                                    ),
+                                    fontSize = 14.sp
+                                ),
                                 start = 0,
                                 end = length
                             )
                         },
                         onClick = {
-                            navController.navigate(BottomBarScreen.ForgotPassword.route)
+                            navController.navigate(Screen.ForgotPassword.route)
                         }
                     )
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(
-                    onClick = {navController.navigate(BottomBarScreen.Home.route) },
+                    onClick = {
+                        // Validasi input pengguna
+                        if (usernameState.value.isEmpty()) {
+                            errorMessage.value = "Nama Pengguna tidak boleh kosong"
+                        } else if (passwordState.value.isEmpty()) {
+                            errorMessage.value = "Kata Sandi tidak boleh kosong"
+                        } else {
+                            errorMessage.value = ""
+                            loginViewModel.validateLogin(
+                                usernameState.value,
+                                passwordState.value
+                            ) { isValid ->
+                                if (isValid) {
+                                    navController.navigate(Screen.Home.route)
+                                } else {
+                                    errorMessage.value = "Nama Pengguna atau Kata Sandi salah"
+                                }
+                            }
+                        }
+                    },
                     modifier = Modifier.wrapContentWidth(),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.White,
@@ -158,7 +184,6 @@ fun LoginScreen(navController: NavHostController) {
                 ClickableText(
                     text = buildAnnotatedString {
                         append("Belum punya akun? Daftar")
-
                         addStyle(
                             style = SpanStyle(
                                 color = ocean,
@@ -170,7 +195,7 @@ fun LoginScreen(navController: NavHostController) {
                         )
                     },
                     onClick = {
-                        navController.navigate(BottomBarScreen.SignUp.route)
+                        navController.navigate(Screen.SignUp.route)
                     }
                 )
             }
@@ -178,8 +203,18 @@ fun LoginScreen(navController: NavHostController) {
     }
 }
 
-@Preview
-@Composable
-fun LoginScreenPreview() {
-    LoginScreen(rememberNavController())
-}
+//@Preview
+//@Composable
+//fun LoginScreenPreview() {
+//    val navController = rememberNavController()
+//    val loginViewModel = LoginViewModel(MockDonaturDao()) // Gunakan UserDao palsu untuk preview
+//
+//    RangkulAppTheme {
+//        Surface(
+//            modifier = Modifier.fillMaxSize(),
+//            color = MaterialTheme.colorScheme.background
+//        ) {
+//            LoginScreen(navController, loginViewModel)
+//        }
+//    }
+//}

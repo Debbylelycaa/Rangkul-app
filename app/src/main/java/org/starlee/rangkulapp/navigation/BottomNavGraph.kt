@@ -1,5 +1,6 @@
 package org.starlee.rangkulapp.navigation
 
+import LoginViewModel
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -27,25 +28,25 @@ import org.starlee.rangkulapp.ui.screen.TerimakasihScreen
 import org.starlee.rangkulapp.ui.screen.TransferScreen
 
 @Composable
-fun BottomNavGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = BottomBarScreen.Login.route) {
+fun BottomNavGraph(navController: NavHostController, loginViewModel: LoginViewModel) {
+    NavHost(navController, startDestination = Screen.Login.route) {
+        composable(Screen.Login.route) {
+            LoginScreen(navController, loginViewModel)
+        }
+        composable(route = Screen.SignUp.route) {
+            SignupScreen(navController)
+        }
         composable(route = BottomBarScreen.Donasi.route) {
             BerandaScreen(navController)
         }
         composable(route = Screen.Home.route) {
             BerandaScreen(navController)
         }
-        composable(route = BottomBarScreen.Login.route) {
-            LoginScreen(navController)
-        }
-        composable(route = BottomBarScreen.SignUp.route) {
-            SignupScreen(navController)
-        }
         composable(route = BottomBarScreen.RangkulPeduli.route) {
             RangkulPeduliScreen(navController)
         }
         composable(route = BottomBarScreen.Profil.route) {
-            ProfilScreen(navController)
+            ProfilScreen(navController, loginViewModel)
         }
         composable(route = BottomBarScreen.DetailPembayaran.route) {
             DetailPembayaranScreen(navController)
@@ -53,7 +54,7 @@ fun BottomNavGraph(navController: NavHostController) {
         composable(route = BottomBarScreen.MulaiDonasi.route) {
             MulaiDonasiScreen(navController)
         }
-        composable(route = BottomBarScreen.PembayaranBerhasil.route) {
+        composable(route = Screen.PembayaranBerhasil.route) {
             PembayaranBerhasilScreen(navController)
         }
         composable(route = BottomBarScreen.Terimakasih.route) {
